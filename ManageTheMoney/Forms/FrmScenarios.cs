@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ManageTheMoney
+namespace ManageTheMoney.Forms
 {
-    public partial class Form1 : Form
+    public partial class FrmScenarios : Form
     {
-        public Form1()
+        public FrmScenarios()
         {
             InitializeComponent();
+        }
+
+        private void FrmScenarios_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
