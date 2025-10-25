@@ -30,7 +30,7 @@
         {
             this.MsMenus = new System.Windows.Forms.MenuStrip();
             this.TsmiMainMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.TsmiScenarios = new System.Windows.Forms.ToolStripMenuItem();
+            this.TsmiScenariosMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.PnlContent = new System.Windows.Forms.Panel();
             this.MsMenus.SuspendLayout();
             this.SuspendLayout();
@@ -40,7 +40,7 @@
             this.MsMenus.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.MsMenus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.TsmiMainMenu,
-            this.TsmiScenarios});
+            this.TsmiScenariosMenu});
             this.MsMenus.Location = new System.Drawing.Point(0, 0);
             this.MsMenus.Name = "MsMenus";
             this.MsMenus.Size = new System.Drawing.Size(1584, 24);
@@ -54,12 +54,12 @@
             this.TsmiMainMenu.Text = "Ana Menü";
             this.TsmiMainMenu.Click += new System.EventHandler(this.TsmiMainMenu_Click);
             // 
-            // TsmiScenarios
+            // TsmiScenariosMenu
             // 
-            this.TsmiScenarios.Name = "TsmiScenarios";
-            this.TsmiScenarios.Size = new System.Drawing.Size(74, 20);
-            this.TsmiScenarios.Text = "Senaryolar";
-            this.TsmiScenarios.Click += new System.EventHandler(this.TsmiScenarios_Click);
+            this.TsmiScenariosMenu.Name = "TsmiScenariosMenu";
+            this.TsmiScenariosMenu.Size = new System.Drawing.Size(69, 20);
+            this.TsmiScenariosMenu.Text = "Scenarios";
+            this.TsmiScenariosMenu.Click += new System.EventHandler(this.TsmiScenariosMenu_Click);
             // 
             // PnlContent
             // 
@@ -79,6 +79,7 @@
             this.Controls.Add(this.MsMenus);
             this.MainMenuStrip = this.MsMenus;
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Paranı Yönet";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
@@ -93,7 +94,7 @@
 
         private System.Windows.Forms.MenuStrip MsMenus;
         private System.Windows.Forms.ToolStripMenuItem TsmiMainMenu;
-        private System.Windows.Forms.ToolStripMenuItem TsmiScenarios;
+        private System.Windows.Forms.ToolStripMenuItem TsmiScenariosMenu;
         private System.Windows.Forms.Panel PnlContent;
     }
 }

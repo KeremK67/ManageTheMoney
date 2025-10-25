@@ -1,11 +1,14 @@
-﻿using ManageTheMoney.Forms;
+﻿using ManageTheMoney.Classes;
+using ManageTheMoney.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -26,17 +29,25 @@ namespace ManageTheMoney
 
         // VALUES - DEĞERLER
         #region
-        FrmMainContent  MainContent = new(); // Ana içerik form nesnesi.
-        FrmScenarios Scenarios = new(); // Senaryolar formu nesnesi.
+        private readonly FrmMainContent  MainContent = new(); // Ana içerik form nesnesi.
+        private readonly FrmScenarios Scenarios = new(); // Senaryolar formu nesnesi.
 
-        string SelectedMenu = "MainMenu"; // Seçili menüyü kontrol etmek için.
+        private string SelectedMenu = "MainMenu"; // Seçili menüyü kontrol etmek için.
         #endregion
 
         // METHODS - METODLAR
         #region
+        // Bu metodun amacı dil içeriklerini ayarlamak.
+        private void InitializeLanguage()
+        {
+            LanguageManager.SetLanguage("tr"); // Değişecek
+            this.Text = LanguageManager.RM.GetString("FrmMainText", CultureInfo.CurrentUICulture);
+            TsmiMainMenu.Text = LanguageManager.RM.GetString("TsmiMainMenuText", CultureInfo.CurrentUICulture);
+            TsmiScenariosMenu.Text = LanguageManager.RM.GetString("TsmiScenariosMenuText", CultureInfo.CurrentUICulture);
+        }
+
         // Bu metodun amacı ana içerik formunu panelde göstermek.
-        // Bunu bir metod haline getirdim çünkü hem form yüklendiğinde hem de menüden tıklandığında çağıracağım.
-        private void GetMainContentMenu()
+        private void ShowMainContentMenuInPanel()
         {
             PnlContent.Controls.Clear();
             MainContent.TopLevel = false;
@@ -46,23 +57,9 @@ namespace ManageTheMoney
             MainContent.Show();
             SelectedMenu = "MainMenu";
         }
-        #endregion
 
-        // LOAD - FORM YÜKLENDİĞİNDE
-        #region
-        private void FrmMain_Load(object sender, EventArgs e)
-        {
-            GetMainContentMenu();
-        }
-        #endregion
-
-        // TOP MENU - ÜST MENÜ
-        #region
-        private void TsmiMainMenu_Click(object sender, EventArgs e)
-        {
-            GetMainContentMenu();
-        }
-        private void TsmiScenarios_Click(object sender, EventArgs e)
+        // Bu metodun amacı senaryolar formunu panelde göstermek.
+        private void ShowScenariosMenuInPanel()
         {
             PnlContent.Controls.Clear();
             Scenarios.TopLevel = false;
@@ -74,19 +71,44 @@ namespace ManageTheMoney
         }
         #endregion
 
+        // LOAD - FORM YÜKLENDİĞİNDE
+        #region
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            InitializeLanguage();
+            ShowMainContentMenuInPanel();
+        }
+        #endregion
+
+        // TOP MENU - ÜST MENÜ
+        #region
+        private void TsmiMainMenu_Click(object sender, EventArgs e)
+        {
+            ShowMainContentMenuInPanel();
+        }
+        private void TsmiScenariosMenu_Click(object sender, EventArgs e)
+        {
+            ShowScenariosMenuInPanel();
+        }
+        #endregion
+
+        // RESIZE - FORM BOYUTU DEĞİŞTİĞİNDE
+        #region
+        // Bu yapının amacı formun boyutu değiştiğinde içeriğin de boyutuna göre ayarlanması.
         private void FrmMain_Resize(object sender, EventArgs e)
         {
             switch (SelectedMenu)
             {
                 case "MainMenu":
-                    GetMainContentMenu();
+                    ShowMainContentMenuInPanel();
                     break;
                 case "ScenariosMenu":
-                    Scenarios.Dock = DockStyle.Fill;
+                    ShowScenariosMenuInPanel();
                     break;
                 default:
                     break;
             }
         }
+        #endregion
     }
 }

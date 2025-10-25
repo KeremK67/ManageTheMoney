@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManageTheMoney.Forms;
 
 namespace ManageTheMoney
 {
@@ -16,7 +17,16 @@ namespace ManageTheMoney
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmMain());
+
+            // Login formunu aç
+            FrmLogin loginForm = new FrmLogin();
+
+            // Eğer login başarılıysa ana formu aç
+            if (loginForm.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new FrmMain());
+            }
+
         }
     }
 }
