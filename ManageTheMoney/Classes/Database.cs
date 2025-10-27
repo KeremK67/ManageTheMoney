@@ -8,7 +8,7 @@ using Npgsql;
 
 namespace ManageTheMoney.Classes
 {
-    internal class Database 
+    internal class Database
     {
         /*
          * BU CLASS DATABASE İŞLEMLERİ İÇİN OLUŞTURULDU.
@@ -16,7 +16,7 @@ namespace ManageTheMoney.Classes
          */
 
         // Neon.tech veri tabanı sunucusu
-        private const string _connectionString = "Host=ep-crimson-boat-agf5c418-pooler.c-2.eu-central-1.aws.neon.tech;Username=neondb_owner;Password=npg_ACRMSb4a2Eel;Database=DBManageTheMoney;SslMode=Require;";
+        private const string _connectionString = "Host=ep-crimson-boat-agf5c418-pooler.c-2.eu-central-1.aws.neon.tech;Username=neondb_owner;Password=npg_ACRMSb4a2Eel;Database=DBManageTheMoney;SslMode=Require;TrustServerCertificate=true;";
 
         // GET CONNECTION - BAĞLANTIYI ÇEK
         public static NpgsqlConnection GetConnection()
@@ -29,38 +29,17 @@ namespace ManageTheMoney.Classes
         // !HATA YÖNETİMİ EKLE!
         public static bool Login(string username, string password)
         {
-            string query = "SELECT Id FROM Users WHERE Username = @username";
-            using (NpgsqlConnection connection = GetConnection())
+            string query = "SELECT Id FROM UserAuth WHERE Username = @username AND Password = @password";
+
+            using (var connection = GetConnection())
             {
                 connection.Open();
-                using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                using (var command = new NpgsqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@username", username);
-                    using (NpgsqlDataReader reader = command.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            query = "SELECT Id FROM Users WHERE Password = @password";
-                            using (NpgsqlCommand passwordCommand = new NpgsqlCommand(query, connection))
-                            {
-                                passwordCommand.Parameters.AddWithValue("@password", password);
-                                using (NpgsqlDataReader passwordReader = passwordCommand.ExecuteReader())
-                                {
-                                    if (!passwordReader.Read())
-                                    {
-                                        MessageBox.Show("Kullanıcı adı veya şifre yanlış.", "Giriş Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                        return false; // Giriş başarısız
-                                    }
-                                }
-                            }
-                            return true; // Giriş başarılı
-                        }
-                        else
-                        {
-                            MessageBox.Show("Kullanıcı adı veya şifre yanlış.", "Giriş Hatası", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return false; // Giriş başarısız
-                        }
-                    }
+                    command.Parameters.AddWithValue("username", username);
+                    command.Parameters.AddWithValue("password", password);
+                    var result = command.ExecuteScalar();
+                    return result != null;
                 }
             }
         }

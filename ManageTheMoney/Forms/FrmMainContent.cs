@@ -36,7 +36,6 @@ namespace ManageTheMoney.Forms
         #region
         private void FrmMainContent_Load(object sender, EventArgs e)
         {
-            LanguageManager.SetLanguage("tr"); // Değişecek
             this.Text = LanguageManager.RM.GetString("FrmMainContentText", CultureInfo.CurrentUICulture);
             string[] langs = LanguageManager.RM.GetString("CmbMonths").Split(';');
             CmbMonths.Items.Clear();

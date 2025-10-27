@@ -22,7 +22,7 @@ namespace ManageTheMoney.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Strings {
+    public class Strings {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace ManageTheMoney.Resources {
         ///   Bu sınıf tarafından kullanılan, önbelleğe alınmış ResourceManager örneğini döndürür.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ManageTheMoney.Resources.Strings", typeof(Strings).Assembly);
@@ -51,7 +51,7 @@ namespace ManageTheMoney.Resources {
         ///   CurrentUICulture özelliğini tüm kaynak aramaları için geçersiz kılar.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,36 @@ namespace ManageTheMoney.Resources {
         }
         
         /// <summary>
+        ///   Cancel benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string BtnCancelText {
+            get {
+                return ResourceManager.GetString("BtnCancelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Login benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string BtnLoginText {
+            get {
+                return ResourceManager.GetString("BtnLoginText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Register benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string BtnRegisterText {
+            get {
+                return ResourceManager.GetString("BtnRegisterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   January;February;March;April;May;June;July;August;September;October;November;December benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string CmbMonths {
+        public static string CmbMonths {
             get {
                 return ResourceManager.GetString("CmbMonths", resourceCulture);
             }
@@ -72,16 +99,52 @@ namespace ManageTheMoney.Resources {
         /// <summary>
         ///   Month benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string CmbMonthsText {
+        public static string CmbMonthsText {
             get {
-                return ResourceManager.GetString("CmbMonthText", resourceCulture);
+                return ResourceManager.GetString("CmbMonthsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Year benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string CmbYearsText {
+            get {
+                return ResourceManager.GetString("CmbYearsText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Username or password is incorrect! benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ErrorLoginFailedMessage {
+            get {
+                return ResourceManager.GetString("ErrorLoginFailedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Error! benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ErrorTitle {
+            get {
+                return ResourceManager.GetString("ErrorTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Login benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string FrmLoginText {
+            get {
+                return ResourceManager.GetString("FrmLoginText", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Statement benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string FrmMainContentText {
+        public static string FrmMainContentText {
             get {
                 return ResourceManager.GetString("FrmMainContentText", resourceCulture);
             }
@@ -90,34 +153,70 @@ namespace ManageTheMoney.Resources {
         /// <summary>
         ///   Manage The Money benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string FrmMainText {
+        public static string FrmMainText {
             get {
                 return ResourceManager.GetString("FrmMainText", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Register benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string FrmRegisterText {
+            get {
+                return ResourceManager.GetString("FrmRegisterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Login benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string GrpLoginText {
+            get {
+                return ResourceManager.GetString("GrpLoginText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Previus Statement benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string GrpPreviousStatementText {
+        public static string GrpPreviousStatementText {
             get {
                 return ResourceManager.GetString("GrpPreviousStatementText", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Register benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string GrpRegisterText {
+            get {
+                return ResourceManager.GetString("GrpRegisterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Statement benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string GrpStatementText {
+        public static string GrpStatementText {
             get {
                 return ResourceManager.GetString("GrpStatementText", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Date of Birth benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string LblDateOfBirthText {
+            get {
+                return ResourceManager.GetString("LblDateOfBirthText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Expenses : benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string LblExpensesText {
+        public static string LblExpensesText {
             get {
                 return ResourceManager.GetString("LblExpensesText", resourceCulture);
             }
@@ -126,16 +225,52 @@ namespace ManageTheMoney.Resources {
         /// <summary>
         ///   Incomes : benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string LblIncomesText {
+        public static string LblIncomesText {
             get {
                 return ResourceManager.GetString("LblIncomesText", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Mail : benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string LblMailText {
+            get {
+                return ResourceManager.GetString("LblMailText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Name : benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string LblNameText {
+            get {
+                return ResourceManager.GetString("LblNameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Password : benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string LblPasswordText {
+            get {
+                return ResourceManager.GetString("LblPasswordText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Phone Number : benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string LblPhoneNumberText {
+            get {
+                return ResourceManager.GetString("LblPhoneNumberText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Previous Expenses : benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string LblPreviousExpensesText {
+        public static string LblPreviousExpensesText {
             get {
                 return ResourceManager.GetString("LblPreviousExpensesText", resourceCulture);
             }
@@ -144,7 +279,7 @@ namespace ManageTheMoney.Resources {
         /// <summary>
         ///   Previous Incomes : benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string LblPreviousIncomesText {
+        public static string LblPreviousIncomesText {
             get {
                 return ResourceManager.GetString("LblPreviousIncomesText", resourceCulture);
             }
@@ -153,25 +288,43 @@ namespace ManageTheMoney.Resources {
         /// <summary>
         ///   Previous Total : benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string LblPreviousTotalText {
+        public static string LblPreviousTotalText {
             get {
                 return ResourceManager.GetString("LblPreviousTotalText", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Surname : benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string LblSurnameText {
+            get {
+                return ResourceManager.GetString("LblSurnameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Total : benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string LblTotalText {
+        public static string LblTotalText {
             get {
                 return ResourceManager.GetString("LblTotalText", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Username : benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string LblUsernameText {
+            get {
+                return ResourceManager.GetString("LblUsernameText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Main Menu benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string TsmiMainMenuText {
+        public static string TsmiMainMenuText {
             get {
                 return ResourceManager.GetString("TsmiMainMenuText", resourceCulture);
             }
@@ -180,7 +333,7 @@ namespace ManageTheMoney.Resources {
         /// <summary>
         ///   Scenarios benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        internal static string TsmiScenariosMenuText {
+        public static string TsmiScenariosMenuText {
             get {
                 return ResourceManager.GetString("TsmiScenariosMenuText", resourceCulture);
             }

@@ -175,4 +175,52 @@
   <data name="CmbYearsText" xml:space="preserve">
     <value>Yıl</value>
   </data>
+  <data name="FrmLoginText" xml:space="preserve">
+    <value>Giriş Yap</value>
+  </data>
+  <data name="GrpLoginText" xml:space="preserve">
+    <value>Giriş Yap</value>
+  </data>
+  <data name="LblUsernameText" xml:space="preserve">
+    <value>Kullanıcı Adı :</value>
+  </data>
+  <data name="LblPasswordText" xml:space="preserve">
+    <value>Parola :</value>
+  </data>
+  <data name="BtnRegisterText" xml:space="preserve">
+    <value>Kayıt Ol</value>
+  </data>
+  <data name="BtnLoginText" xml:space="preserve">
+    <value>Giriş yap</value>
+  </data>
+  <data name="FrmRegisterText" xml:space="preserve">
+    <value>Kayıt Ol</value>
+  </data>
+  <data name="GrpRegisterText" xml:space="preserve">
+    <value>Kayıt Ol</value>
+  </data>
+  <data name="LblNameText" xml:space="preserve">
+    <value>İsim :</value>
+  </data>
+  <data name="LblSurnameText" xml:space="preserve">
+    <value>Soyisim :</value>
+  </data>
+  <data name="LblMailText" xml:space="preserve">
+    <value>Email :</value>
+  </data>
+  <data name="LblPhoneNumberText" xml:space="preserve">
+    <value>Telefon No :</value>
+  </data>
+  <data name="LblDateOfBirthText" xml:space="preserve">
+    <value>Doğum tarihi :</value>
+  </data>
+  <data name="BtnCancelText" xml:space="preserve">
+    <value>İptal</value>
+  </data>
+  <data name="ErrorLoginFailedMessage" xml:space="preserve">
+    <value>Kullanıcı adı veya şifre yanlış!</value>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Hata!</value>
+  </data>
 </root>

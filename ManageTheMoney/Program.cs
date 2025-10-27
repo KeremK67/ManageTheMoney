@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManageTheMoney.Classes;
 using ManageTheMoney.Forms;
 
 namespace ManageTheMoney
@@ -17,6 +18,9 @@ namespace ManageTheMoney
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Dili ayarla
+            LanguageManager.SetLanguage("tr");
 
             // Login formunu aç
             FrmLogin loginForm = new FrmLogin();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ManageTheMoney.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace ManageTheMoney.Forms
 {
@@ -33,7 +35,12 @@ namespace ManageTheMoney.Forms
         #region
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-
+            this.Text = LanguageManager.RM.GetString("FrmLoginText", CultureInfo.CurrentUICulture);
+            GrpLogin.Text = LanguageManager.RM.GetString("GrpLoginText", CultureInfo.CurrentUICulture);
+            LblUsername.Text = LanguageManager.RM.GetString("LblUsernameText", CultureInfo.CurrentUICulture);
+            LblPassword.Text = LanguageManager.RM.GetString("LblPasswordText", CultureInfo.CurrentUICulture);
+            BtnLogin.Text = LanguageManager.RM.GetString("BtnLoginText", CultureInfo.CurrentUICulture);
+            BtnRegister.Text = LanguageManager.RM.GetString("BtnRegisterText", CultureInfo.CurrentUICulture);
         }
         #endregion
 
@@ -41,8 +48,18 @@ namespace ManageTheMoney.Forms
         #region
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (Database.Login(TxtUsername.Text, TxtPassword.Text))
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+                TxtPassword.Clear();
+                TxtUsername.Clear();
+            }
+            else
+            {
+                MessageBox.Show(LanguageManager.RM.GetString("ErrorLoginFailedMessage", System.Globalization.CultureInfo.CurrentUICulture), LanguageManager.RM.GetString("ErrorTitle", System.Globalization.CultureInfo.CurrentUICulture), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
         private void BtnRegister_Click(object sender, EventArgs e)
         {

@@ -177,4 +177,68 @@
     <value>Year</value>
     <comment>Cmb metni</comment>
   </data>
+  <data name="FrmLoginText" xml:space="preserve">
+    <value>Login</value>
+    <comment>Giriş yap formu başlığı</comment>
+  </data>
+  <data name="GrpLoginText" xml:space="preserve">
+    <value>Login</value>
+    <comment>Grp başlığı</comment>
+  </data>
+  <data name="LblUsernameText" xml:space="preserve">
+    <value>Username :</value>
+    <comment>Lbl metni</comment>
+  </data>
+  <data name="LblPasswordText" xml:space="preserve">
+    <value>Password :</value>
+    <comment>Lbl metni</comment>
+  </data>
+  <data name="BtnRegisterText" xml:space="preserve">
+    <value>Register</value>
+    <comment>Buton metni</comment>
+  </data>
+  <data name="BtnLoginText" xml:space="preserve">
+    <value>Login</value>
+    <comment>Buton metni</comment>
+  </data>
+  <data name="FrmRegisterText" xml:space="preserve">
+    <value>Register</value>
+    <comment>Kayıt ol formu başlığı</comment>
+  </data>
+  <data name="GrpRegisterText" xml:space="preserve">
+    <value>Register</value>
+    <comment>Grp başlığı</comment>
+  </data>
+  <data name="LblNameText" xml:space="preserve">
+    <value>Name :</value>
+    <comment>Lbl metni</comment>
+  </data>
+  <data name="LblSurnameText" xml:space="preserve">
+    <value>Surname :</value>
+    <comment>Lbl metni</comment>
+  </data>
+  <data name="LblMailText" xml:space="preserve">
+    <value>Mail :</value>
+    <comment>Lbl metni</comment>
+  </data>
+  <data name="LblPhoneNumberText" xml:space="preserve">
+    <value>Phone Number :</value>
+    <comment>Lbl metni</comment>
+  </data>
+  <data name="LblDateOfBirthText" xml:space="preserve">
+    <value>Date of Birth</value>
+    <comment>Lbl metni</comment>
+  </data>
+  <data name="BtnCancelText" xml:space="preserve">
+    <value>Cancel</value>
+    <comment>Buton metni</comment>
+  </data>
+  <data name="ErrorLoginFailedMessage" xml:space="preserve">
+    <value>Username or password is incorrect!</value>
+    <comment>Hata mesajı</comment>
+  </data>
+  <data name="ErrorTitle" xml:space="preserve">
+    <value>Error!</value>
+    <comment>Hata başlığı</comment>
+  </data>
 </root>

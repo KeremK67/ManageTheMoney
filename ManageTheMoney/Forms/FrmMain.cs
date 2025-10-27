@@ -40,7 +40,6 @@ namespace ManageTheMoney
         // Bu metodun amacı dil içeriklerini ayarlamak.
         private void InitializeLanguage()
         {
-            LanguageManager.SetLanguage("tr"); // Değişecek
             this.Text = LanguageManager.RM.GetString("FrmMainText", CultureInfo.CurrentUICulture);
             TsmiMainMenu.Text = LanguageManager.RM.GetString("TsmiMainMenuText", CultureInfo.CurrentUICulture);
             TsmiScenariosMenu.Text = LanguageManager.RM.GetString("TsmiScenariosMenuText", CultureInfo.CurrentUICulture);
