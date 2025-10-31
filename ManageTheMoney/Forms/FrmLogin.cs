@@ -27,7 +27,6 @@ namespace ManageTheMoney.Forms
 
         // VALUES - DEĞERLER
         #region
-        FrmMain Main = new FrmMain();
         FrmRegister Register = new FrmRegister();
         #endregion
 

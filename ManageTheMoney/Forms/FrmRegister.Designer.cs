@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.GrpRegister = new System.Windows.Forms.GroupBox();
-            this.TxtTel = new System.Windows.Forms.TextBox();
+            this.DtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
+            this.TxtPhoneNumber = new System.Windows.Forms.TextBox();
             this.TxtMail = new System.Windows.Forms.TextBox();
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.TxtSurname = new System.Windows.Forms.TextBox();
             this.TxtName = new System.Windows.Forms.TextBox();
             this.TxtUsername = new System.Windows.Forms.TextBox();
-            this.LblTel = new System.Windows.Forms.Label();
+            this.LblPhoneNumber = new System.Windows.Forms.Label();
             this.LblMail = new System.Windows.Forms.Label();
             this.LblPassword = new System.Windows.Forms.Label();
             this.LblSurname = new System.Windows.Forms.Label();
@@ -44,20 +45,19 @@
             this.LblUsername = new System.Windows.Forms.Label();
             this.BtnRegister = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
-            this.DtpDateOfBirth = new System.Windows.Forms.DateTimePicker();
             this.GrpRegister.SuspendLayout();
             this.SuspendLayout();
             // 
             // GrpRegister
             // 
             this.GrpRegister.Controls.Add(this.DtpDateOfBirth);
-            this.GrpRegister.Controls.Add(this.TxtTel);
+            this.GrpRegister.Controls.Add(this.TxtPhoneNumber);
             this.GrpRegister.Controls.Add(this.TxtMail);
             this.GrpRegister.Controls.Add(this.TxtPassword);
             this.GrpRegister.Controls.Add(this.TxtSurname);
             this.GrpRegister.Controls.Add(this.TxtName);
             this.GrpRegister.Controls.Add(this.TxtUsername);
-            this.GrpRegister.Controls.Add(this.LblTel);
+            this.GrpRegister.Controls.Add(this.LblPhoneNumber);
             this.GrpRegister.Controls.Add(this.LblMail);
             this.GrpRegister.Controls.Add(this.LblPassword);
             this.GrpRegister.Controls.Add(this.LblSurname);
@@ -74,17 +74,25 @@
             this.GrpRegister.TabStop = false;
             this.GrpRegister.Text = "Register";
             // 
-            // TxtTel
+            // DtpDateOfBirth
             // 
-            this.TxtTel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.DtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.DtpDateOfBirth.Location = new System.Drawing.Point(464, 28);
+            this.DtpDateOfBirth.Name = "DtpDateOfBirth";
+            this.DtpDateOfBirth.Size = new System.Drawing.Size(200, 29);
+            this.DtpDateOfBirth.TabIndex = 8;
+            // 
+            // TxtPhoneNumber
+            // 
+            this.TxtPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.TxtTel.Location = new System.Drawing.Point(133, 290);
-            this.TxtTel.Name = "TxtTel";
-            this.TxtTel.Size = new System.Drawing.Size(197, 29);
-            this.TxtTel.TabIndex = 6;
-            this.TxtTel.Text = "554 004 33 67";
+            this.TxtPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.TxtPhoneNumber.Location = new System.Drawing.Point(133, 290);
+            this.TxtPhoneNumber.Name = "TxtPhoneNumber";
+            this.TxtPhoneNumber.Size = new System.Drawing.Size(197, 29);
+            this.TxtPhoneNumber.TabIndex = 6;
+            this.TxtPhoneNumber.Text = "554 004 33 67";
             // 
             // TxtMail
             // 
@@ -147,17 +155,17 @@
             this.TxtUsername.TabIndex = 7;
             this.TxtUsername.Text = "keremk67";
             // 
-            // LblTel
+            // LblPhoneNumber
             // 
-            this.LblTel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.LblPhoneNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.LblTel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.LblTel.Location = new System.Drawing.Point(18, 293);
-            this.LblTel.Name = "LblTel";
-            this.LblTel.Size = new System.Drawing.Size(109, 33);
-            this.LblTel.TabIndex = 4;
-            this.LblTel.Text = "Tel :";
+            this.LblPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.LblPhoneNumber.Location = new System.Drawing.Point(18, 293);
+            this.LblPhoneNumber.Name = "LblPhoneNumber";
+            this.LblPhoneNumber.Size = new System.Drawing.Size(109, 33);
+            this.LblPhoneNumber.TabIndex = 4;
+            this.LblPhoneNumber.Text = "Phone Number :";
             // 
             // LblMail
             // 
@@ -240,6 +248,7 @@
             this.BtnRegister.TabIndex = 3;
             this.BtnRegister.Text = "Register";
             this.BtnRegister.UseVisualStyleBackColor = true;
+            this.BtnRegister.Click += new System.EventHandler(this.BtnRegister_Click);
             // 
             // BtnCancel
             // 
@@ -250,14 +259,7 @@
             this.BtnCancel.TabIndex = 3;
             this.BtnCancel.Text = "Cancel";
             this.BtnCancel.UseVisualStyleBackColor = true;
-            // 
-            // DtpDateOfBirth
-            // 
-            this.DtpDateOfBirth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.DtpDateOfBirth.Location = new System.Drawing.Point(464, 28);
-            this.DtpDateOfBirth.Name = "DtpDateOfBirth";
-            this.DtpDateOfBirth.Size = new System.Drawing.Size(200, 29);
-            this.DtpDateOfBirth.TabIndex = 8;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // FrmRegister
             // 
@@ -269,6 +271,7 @@
             this.Name = "FrmRegister";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register";
+            this.Load += new System.EventHandler(this.FrmRegister_Load);
             this.GrpRegister.ResumeLayout(false);
             this.GrpRegister.PerformLayout();
             this.ResumeLayout(false);
@@ -286,10 +289,10 @@
         private System.Windows.Forms.Label LblUsername;
         private System.Windows.Forms.Button BtnRegister;
         private System.Windows.Forms.Button BtnCancel;
-        private System.Windows.Forms.TextBox TxtTel;
+        private System.Windows.Forms.TextBox TxtPhoneNumber;
         private System.Windows.Forms.TextBox TxtSurname;
         private System.Windows.Forms.TextBox TxtName;
-        private System.Windows.Forms.Label LblTel;
+        private System.Windows.Forms.Label LblPhoneNumber;
         private System.Windows.Forms.Label LblSurname;
         private System.Windows.Forms.Label LblDateOfBirth;
         private System.Windows.Forms.Label LblName;

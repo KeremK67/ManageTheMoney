@@ -85,11 +85,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LblPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.LblPassword.Location = new System.Drawing.Point(146, 246);
+            this.LblPassword.Location = new System.Drawing.Point(12, 246);
             this.LblPassword.Name = "LblPassword";
-            this.LblPassword.Size = new System.Drawing.Size(156, 33);
+            this.LblPassword.Size = new System.Drawing.Size(290, 33);
             this.LblPassword.TabIndex = 4;
             this.LblPassword.Text = "Password :";
+            this.LblPassword.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // LblUsername
             // 
@@ -97,11 +98,12 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.LblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.LblUsername.Location = new System.Drawing.Point(146, 166);
+            this.LblUsername.Location = new System.Drawing.Point(12, 166);
             this.LblUsername.Name = "LblUsername";
-            this.LblUsername.Size = new System.Drawing.Size(156, 33);
+            this.LblUsername.Size = new System.Drawing.Size(290, 33);
             this.LblUsername.TabIndex = 5;
             this.LblUsername.Text = "Username :";
+            this.LblUsername.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // BtnLogin
             // 
