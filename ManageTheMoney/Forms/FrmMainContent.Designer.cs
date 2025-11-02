@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea6 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend6 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.BtnPrevious = new System.Windows.Forms.Button();
             this.BtnNext = new System.Windows.Forms.Button();
             this.PnlCalendar = new System.Windows.Forms.Panel();
@@ -131,9 +131,9 @@
             // 
             // GrpStatament
             // 
+            this.GrpStatament.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.GrpStatament.Controls.Add(this.PnlStatementPie);
             this.GrpStatament.Controls.Add(this.PnlStatementText);
-            this.GrpStatament.Dock = System.Windows.Forms.DockStyle.Right;
             this.GrpStatament.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.GrpStatament.Location = new System.Drawing.Point(790, 100);
             this.GrpStatament.Name = "GrpStatament";
@@ -153,19 +153,19 @@
             // 
             // ChrtStatement
             // 
-            chartArea5.Name = "ChartArea1";
-            this.ChrtStatement.ChartAreas.Add(chartArea5);
-            legend5.Name = "Legend1";
-            legend5.Title = "Previous Statement Graph";
-            this.ChrtStatement.Legends.Add(legend5);
+            chartArea13.Name = "ChartArea1";
+            this.ChrtStatement.ChartAreas.Add(chartArea13);
+            legend13.Name = "Legend1";
+            legend13.Title = "Previous Statement Graph";
+            this.ChrtStatement.Legends.Add(legend13);
             this.ChrtStatement.Location = new System.Drawing.Point(80, 34);
             this.ChrtStatement.Name = "ChrtStatement";
             this.ChrtStatement.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series5.ChartArea = "ChartArea1";
-            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series5.Legend = "Legend1";
-            series5.Name = "Series1";
-            this.ChrtStatement.Series.Add(series5);
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series13.Legend = "Legend1";
+            series13.Name = "Series1";
+            this.ChrtStatement.Series.Add(series13);
             this.ChrtStatement.Size = new System.Drawing.Size(543, 300);
             this.ChrtStatement.TabIndex = 12;
             this.ChrtStatement.Text = "chart1";
@@ -246,9 +246,9 @@
             // 
             // GrpPreviousStatement
             // 
+            this.GrpPreviousStatement.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.GrpPreviousStatement.Controls.Add(this.PnlPreviousStatementPie);
             this.GrpPreviousStatement.Controls.Add(this.PnlPreviousStatementText);
-            this.GrpPreviousStatement.Dock = System.Windows.Forms.DockStyle.Left;
             this.GrpPreviousStatement.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.GrpPreviousStatement.Location = new System.Drawing.Point(75, 100);
             this.GrpPreviousStatement.Name = "GrpPreviousStatement";
@@ -268,19 +268,19 @@
             // 
             // ChrtPreviousStatement
             // 
-            chartArea6.Name = "ChartArea1";
-            this.ChrtPreviousStatement.ChartAreas.Add(chartArea6);
-            legend6.Name = "Legend1";
-            legend6.Title = "Previous Statement Graph";
-            this.ChrtPreviousStatement.Legends.Add(legend6);
+            chartArea14.Name = "ChartArea1";
+            this.ChrtPreviousStatement.ChartAreas.Add(chartArea14);
+            legend14.Name = "Legend1";
+            legend14.Title = "Previous Statement Graph";
+            this.ChrtPreviousStatement.Legends.Add(legend14);
             this.ChrtPreviousStatement.Location = new System.Drawing.Point(69, 41);
             this.ChrtPreviousStatement.Name = "ChrtPreviousStatement";
             this.ChrtPreviousStatement.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series6.ChartArea = "ChartArea1";
-            series6.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series6.Legend = "Legend1";
-            series6.Name = "Series1";
-            this.ChrtPreviousStatement.Series.Add(series6);
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series14.Legend = "Legend1";
+            series14.Name = "Series1";
+            this.ChrtPreviousStatement.Series.Add(series14);
             this.ChrtPreviousStatement.Size = new System.Drawing.Size(543, 300);
             this.ChrtPreviousStatement.TabIndex = 9;
             this.ChrtPreviousStatement.Text = "chart1";
@@ -293,7 +293,6 @@
             this.PnlPreviousStatementText.Controls.Add(this.LblPreviousExpenses);
             this.PnlPreviousStatementText.Controls.Add(this.LblPreviousIncomes);
             this.PnlPreviousStatementText.Controls.Add(this.TxtPreviousIncomes);
-            this.PnlPreviousStatementText.Dock = System.Windows.Forms.DockStyle.Top;
             this.PnlPreviousStatementText.Location = new System.Drawing.Point(3, 45);
             this.PnlPreviousStatementText.Name = "PnlPreviousStatementText";
             this.PnlPreviousStatementText.Size = new System.Drawing.Size(697, 350);
@@ -371,6 +370,7 @@
             this.Controls.Add(this.BtnNext);
             this.Controls.Add(this.BtnPrevious);
             this.Name = "FrmMainContent";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Statement";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMainContent_Load);

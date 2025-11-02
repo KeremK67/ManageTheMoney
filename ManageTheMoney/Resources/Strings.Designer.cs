@@ -124,6 +124,15 @@ namespace ManageTheMoney.Resources {
         }
         
         /// <summary>
+        ///   Register Failed! benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ErrorRegisterFailedMessage {
+            get {
+                return ResourceManager.GetString("ErrorRegisterFailedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Error! benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         public static string ErrorTitle {

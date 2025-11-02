@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +29,29 @@ namespace ManageTheMoney.Classes
             return new NpgsqlConnection(_connectionString);
         }
 
+        // GET USER ID BY USERNAME - KULLANICI ADINA GÖRE KULLANICI ID'SİNİ AL
+        //!BUNUN YERİNE DAHA GÜVENLİ BİR YÖNTEM BUL!
+        #region
+        public static int GetUserIdByUsername(string username)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                string query = "SELECT Id FROM Users WHERE Username = @username";
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("username", username);
+                    var result = command.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : -1; // Kullanıcı bulunamazsa -1 döndür
+                }
+            }
+        }
+        #endregion
+
         // LOGIN SYSTEM - GİRİŞ SİSTEMİ
         // !ŞİFRELERİ HASHLE!
         // !HATA YÖNETİMİ EKLE!
+        #region
         public static bool Login(string username, string password)
         {
             using (var connection = GetConnection())
@@ -47,9 +68,11 @@ namespace ManageTheMoney.Classes
                 }
             }
         }
+        #endregion
 
         // REGISTER SYSTEM - KAYIT SİSTEMİ
         // !VERİ DENETİMİ EKLE!
+        #region
         public static bool Register(string name, string surname, string username, string password, DateTime dateOfBirth, string email = null, string phoneNumber = null)
         {
             using (var connection = GetConnection())
@@ -86,5 +109,25 @@ namespace ManageTheMoney.Classes
                 return authRowsAffected > 0;
             }
         }
+        #endregion
+
+        // LOAD TABLE DATAGRIDVIEW - TABLOYU DATAGRIDVIEW'E YÜKLE
+        #region
+        public static DataTable LoadTable(string tableName)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+
+                string query = $"SELECT * FROM {tableName} WHERE UserId = {Properties.Settings.Default.LoggedUserId} ORDER BY Id DESC";
+                using (var adapter = new NpgsqlDataAdapter(query, connection))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    return dataTable;
+                }
+            }
+        }
+        #endregion
     }
 }

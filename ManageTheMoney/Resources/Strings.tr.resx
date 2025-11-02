@@ -223,4 +223,7 @@
   <data name="ErrorTitle" xml:space="preserve">
     <value>Hata!</value>
   </data>
+  <data name="ErrorRegisterFailedMessage" xml:space="preserve">
+    <value>Kayıt Hatası!</value>
+  </data>
 </root>

@@ -50,8 +50,8 @@
             // TsmiMainMenu
             // 
             this.TsmiMainMenu.Name = "TsmiMainMenu";
-            this.TsmiMainMenu.Size = new System.Drawing.Size(74, 20);
-            this.TsmiMainMenu.Text = "Ana Menü";
+            this.TsmiMainMenu.Size = new System.Drawing.Size(80, 20);
+            this.TsmiMainMenu.Text = "Main Menu";
             this.TsmiMainMenu.Click += new System.EventHandler(this.TsmiMainMenu_Click);
             // 
             // TsmiScenariosMenu
@@ -80,7 +80,7 @@
             this.MainMenuStrip = this.MsMenus;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Paranı Yönet";
+            this.Text = "Manage The Money";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.Resize += new System.EventHandler(this.FrmMain_Resize);
             this.MsMenus.ResumeLayout(false);

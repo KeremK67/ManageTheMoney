@@ -241,4 +241,8 @@
     <value>Error!</value>
     <comment>Hata başlığı</comment>
   </data>
+  <data name="ErrorRegisterFailedMessage" xml:space="preserve">
+    <value>Register Failed!</value>
+    <comment>Hata mesajı</comment>
+  </data>
 </root>

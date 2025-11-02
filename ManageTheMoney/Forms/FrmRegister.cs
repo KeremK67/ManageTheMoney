@@ -1,13 +1,14 @@
-﻿using System;
+﻿using ManageTheMoney.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ManageTheMoney.Classes;
 
 namespace ManageTheMoney.Forms
 {
@@ -54,11 +55,19 @@ namespace ManageTheMoney.Forms
         {
             if (Database.Register(TxtName.Text,TxtSurname.Text,TxtUsername.Text,TxtPassword.Text,DtpDateOfBirth.Value,TxtMail.Text,TxtPhoneNumber.Text))
             {
-                MessageBox.Show("başarılı");
+                TxtName.Clear();
+                TxtSurname.Clear();
+                TxtUsername.Clear();
+                TxtPassword.Clear();
+                DtpDateOfBirth.Value = DateTime.Now;
+                TxtMail.Clear();
+                TxtPhoneNumber.Clear();
+
+                this.Close();
             }
             else
             {
-                MessageBox.Show("başarısız");
+                MessageBox.Show(LanguageManager.RM.GetString("ErrorRegisterFailedMessage", CultureInfo.CurrentUICulture), LanguageManager.RM.GetString("ErrorTitle", CultureInfo.CurrentUICulture), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion

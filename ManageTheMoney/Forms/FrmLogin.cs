@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Globalization;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ManageTheMoney.Forms
 {
@@ -49,14 +50,18 @@ namespace ManageTheMoney.Forms
         {
             if (Database.Login(TxtUsername.Text, TxtPassword.Text))
             {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                Properties.Settings.Default.IsLoggedIn = true;
+                Properties.Settings.Default.LoggedUserId = Database.GetUserIdByUsername(TxtUsername.Text);
+                Properties.Settings.Default.Save();
+
                 TxtPassword.Clear();
                 TxtUsername.Clear();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             else
             {
-                MessageBox.Show(LanguageManager.RM.GetString("ErrorLoginFailedMessage", System.Globalization.CultureInfo.CurrentUICulture), LanguageManager.RM.GetString("ErrorTitle", System.Globalization.CultureInfo.CurrentUICulture), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(LanguageManager.RM.GetString("ErrorLoginFailedMessage",CultureInfo.CurrentUICulture), LanguageManager.RM.GetString("ErrorTitle", CultureInfo.CurrentUICulture), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

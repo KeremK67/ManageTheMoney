@@ -22,13 +22,21 @@ namespace ManageTheMoney
             // Dili ayarla
             LanguageManager.SetLanguage("tr");
 
-            // Login formunu aç
-            FrmLogin loginForm = new FrmLogin();
-
-            // Eğer login başarılıysa ana formu aç
-            if (loginForm.ShowDialog() == DialogResult.OK)
+            if (Properties.Settings.Default.IsLoggedIn)
             {
+                // Kullanıcı zaten giriş yapmış → direkt ana forma git
                 Application.Run(new FrmMain());
+            }
+            else
+            {
+                // İlk kez giriş yapacak → login formu göster
+                using (FrmLogin login = new FrmLogin())
+                {
+                    if (login.ShowDialog() == DialogResult.OK)
+                    {
+                        Application.Run(new FrmMain());
+                    }
+                }
             }
 
         }
