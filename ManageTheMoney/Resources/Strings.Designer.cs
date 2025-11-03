@@ -331,6 +331,123 @@ namespace ManageTheMoney.Resources {
         }
         
         /// <summary>
+        ///   Amount benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleAmount {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Created At benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleCreatedAt {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleCreatedAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Currency benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleCurrency {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleCurrency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Description benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleDescription {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Expected Date benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleExpectedDate {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleExpectedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Expected Date End benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleExpectedDateEnd {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleExpectedDateEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Is Realized benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleIsRealized {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleIsRealized", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Probability benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleProbability {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleProbability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Realized At benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleRealizedAt {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleRealizedAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recurring benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleRecurring {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleRecurring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Title benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleTitle {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Scenario Type benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleType {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Update At benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleUpdateAt {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleUpdateAt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Main Menu benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         public static string TsmiMainMenuText {

@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.GrpEditScenarios = new System.Windows.Forms.GroupBox();
-            this.DeleteScenarios = new System.Windows.Forms.Button();
+            this.BtnDeleteScenarios = new System.Windows.Forms.Button();
             this.BtnAddScenarios = new System.Windows.Forms.Button();
             this.GrpScenariosTable = new System.Windows.Forms.GroupBox();
             this.DgvScenariosTable = new System.Windows.Forms.DataGridView();
+            this.BtnEditScenarios = new System.Windows.Forms.Button();
             this.GrpEditScenarios.SuspendLayout();
             this.GrpScenariosTable.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvScenariosTable)).BeginInit();
@@ -40,7 +41,8 @@
             // 
             // GrpEditScenarios
             // 
-            this.GrpEditScenarios.Controls.Add(this.DeleteScenarios);
+            this.GrpEditScenarios.Controls.Add(this.BtnEditScenarios);
+            this.GrpEditScenarios.Controls.Add(this.BtnDeleteScenarios);
             this.GrpEditScenarios.Controls.Add(this.BtnAddScenarios);
             this.GrpEditScenarios.Dock = System.Windows.Forms.DockStyle.Top;
             this.GrpEditScenarios.Location = new System.Drawing.Point(0, 0);
@@ -50,17 +52,18 @@
             this.GrpEditScenarios.TabStop = false;
             this.GrpEditScenarios.Text = "Edit";
             // 
-            // DeleteScenarios
+            // BtnDeleteScenarios
             // 
-            this.DeleteScenarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.BtnDeleteScenarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteScenarios.Location = new System.Drawing.Point(129, 43);
-            this.DeleteScenarios.Name = "DeleteScenarios";
-            this.DeleteScenarios.Size = new System.Drawing.Size(100, 55);
-            this.DeleteScenarios.TabIndex = 0;
-            this.DeleteScenarios.Text = "Delete Scenarios";
-            this.DeleteScenarios.UseVisualStyleBackColor = true;
+            this.BtnDeleteScenarios.Location = new System.Drawing.Point(129, 43);
+            this.BtnDeleteScenarios.Name = "BtnDeleteScenarios";
+            this.BtnDeleteScenarios.Size = new System.Drawing.Size(100, 55);
+            this.BtnDeleteScenarios.TabIndex = 0;
+            this.BtnDeleteScenarios.Text = "Delete Scenarios";
+            this.BtnDeleteScenarios.UseVisualStyleBackColor = true;
+            this.BtnDeleteScenarios.Click += new System.EventHandler(this.BtnDeleteScenarios_Click);
             // 
             // BtnAddScenarios
             // 
@@ -73,6 +76,7 @@
             this.BtnAddScenarios.TabIndex = 0;
             this.BtnAddScenarios.Text = "Add Scenarios";
             this.BtnAddScenarios.UseVisualStyleBackColor = true;
+            this.BtnAddScenarios.Click += new System.EventHandler(this.BtnAddScenarios_Click);
             // 
             // GrpScenariosTable
             // 
@@ -97,6 +101,19 @@
             this.DgvScenariosTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvScenariosTable.Size = new System.Drawing.Size(1562, 689);
             this.DgvScenariosTable.TabIndex = 0;
+            // 
+            // BtnEditScenarios
+            // 
+            this.BtnEditScenarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnEditScenarios.Location = new System.Drawing.Point(251, 43);
+            this.BtnEditScenarios.Name = "BtnEditScenarios";
+            this.BtnEditScenarios.Size = new System.Drawing.Size(100, 55);
+            this.BtnEditScenarios.TabIndex = 1;
+            this.BtnEditScenarios.Text = "Edit Scenarios";
+            this.BtnEditScenarios.UseVisualStyleBackColor = true;
+            this.BtnEditScenarios.Click += new System.EventHandler(this.BtnEditScenarios_Click);
             // 
             // FrmScenarios
             // 
@@ -123,7 +140,8 @@
         private System.Windows.Forms.GroupBox GrpEditScenarios;
         private System.Windows.Forms.GroupBox GrpScenariosTable;
         private System.Windows.Forms.Button BtnAddScenarios;
-        private System.Windows.Forms.Button DeleteScenarios;
+        private System.Windows.Forms.Button BtnDeleteScenarios;
         private System.Windows.Forms.DataGridView DgvScenariosTable;
+        private System.Windows.Forms.Button BtnEditScenarios;
     }
 }

@@ -245,4 +245,56 @@
     <value>Register Failed!</value>
     <comment>Hata mesajı</comment>
   </data>
+  <data name="ScenarioGridTitleTitle" xml:space="preserve">
+    <value>Title</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleDescription" xml:space="preserve">
+    <value>Description</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleType" xml:space="preserve">
+    <value>Scenario Type</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleAmount" xml:space="preserve">
+    <value>Amount</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleCurrency" xml:space="preserve">
+    <value>Currency</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleExpectedDate" xml:space="preserve">
+    <value>Expected Date</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleExpectedDateEnd" xml:space="preserve">
+    <value>Expected Date End</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleProbability" xml:space="preserve">
+    <value>Probability</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleRecurring" xml:space="preserve">
+    <value>Recurring</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleIsRealized" xml:space="preserve">
+    <value>Is Realized</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleRealizedAt" xml:space="preserve">
+    <value>Realized At</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleCreatedAt" xml:space="preserve">
+    <value>Created At</value>
+    <comment>Grid başlığı</comment>
+  </data>
+  <data name="ScenarioGridTitleUpdateAt" xml:space="preserve">
+    <value>Update At</value>
+    <comment>Grid başlığı</comment>
+  </data>
 </root>

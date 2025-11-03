@@ -35,7 +35,7 @@ namespace ManageTheMoney
         private string SelectedMenu = "MainMenu"; // Seçili menüyü kontrol etmek için.
         #endregion
 
-        // METHODS - METODLAR
+        // METHODS - METOTLAR
         #region
         // Bu metodun amacı dil içeriklerini ayarlamak.
         private void InitializeLanguage()
