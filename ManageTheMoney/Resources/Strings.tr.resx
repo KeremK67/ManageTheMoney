@@ -262,7 +262,25 @@
   <data name="ScenarioGridTitleCreatedAt" xml:space="preserve">
     <value>Oluşturulduğu Tarih</value>
   </data>
-  <data name="ScenarioGridTitleUpdateAt" xml:space="preserve">
+  <data name="ScenarioGridTitleUpdatedAt" xml:space="preserve">
     <value>Güncellendiği Tarih</value>
+  </data>
+  <data name="FrmScenariosText" xml:space="preserve">
+    <value>Senaryolar</value>
+  </data>
+  <data name="GrpEditScenariosText" xml:space="preserve">
+    <value>Düzenle</value>
+  </data>
+  <data name="BtnEditScenarioText" xml:space="preserve">
+    <value>Senaryo Düzenle</value>
+  </data>
+  <data name="BtnAddScenarioText" xml:space="preserve">
+    <value>Senaryo Ekle</value>
+  </data>
+  <data name="BtnDeleteScenarioText" xml:space="preserve">
+    <value>Senaryo Sil</value>
+  </data>
+  <data name="GrpScenariosTable" xml:space="preserve">
+    <value>Senaryolar Tablosu</value>
   </data>
 </root>

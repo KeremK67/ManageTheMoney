@@ -61,11 +61,38 @@ namespace ManageTheMoney.Resources {
         }
         
         /// <summary>
+        ///   Add Scenario benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string BtnAddScenarioText {
+            get {
+                return ResourceManager.GetString("BtnAddScenarioText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Cancel benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         public static string BtnCancelText {
             get {
                 return ResourceManager.GetString("BtnCancelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Delete Scenario benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string BtnDeleteScenarioText {
+            get {
+                return ResourceManager.GetString("BtnDeleteScenarioText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Edit Scenario benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string BtnEditScenarioText {
+            get {
+                return ResourceManager.GetString("BtnEditScenarioText", resourceCulture);
             }
         }
         
@@ -178,6 +205,24 @@ namespace ManageTheMoney.Resources {
         }
         
         /// <summary>
+        ///   Scenarios benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string FrmScenariosText {
+            get {
+                return ResourceManager.GetString("FrmScenariosText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Edit benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string GrpEditScenariosText {
+            get {
+                return ResourceManager.GetString("GrpEditScenariosText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Login benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         public static string GrpLoginText {
@@ -201,6 +246,15 @@ namespace ManageTheMoney.Resources {
         public static string GrpRegisterText {
             get {
                 return ResourceManager.GetString("GrpRegisterText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Scenarios Table benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string GrpScenariosTable {
+            get {
+                return ResourceManager.GetString("GrpScenariosTable", resourceCulture);
             }
         }
         
@@ -439,11 +493,11 @@ namespace ManageTheMoney.Resources {
         }
         
         /// <summary>
-        ///   Update At benzeri yerelleştirilmiş bir dize arar.
+        ///   Updated At benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
-        public static string ScenarioGridTitleUpdateAt {
+        public static string ScenarioGridTitleUpdatedAt {
             get {
-                return ResourceManager.GetString("ScenarioGridTitleUpdateAt", resourceCulture);
+                return ResourceManager.GetString("ScenarioGridTitleUpdatedAt", resourceCulture);
             }
         }
         

@@ -26,9 +26,9 @@ namespace ManageTheMoney.Forms
             InitializeComponent();
         }
 
-        // VALUES - DEĞERLER
+        // VARIABLES - DEĞİŞKENLER
         #region
-        FrmRegister Register = new FrmRegister();
+        private readonly FrmRegister Register = new();
         #endregion
 
         // LOAD - FORM YÜKLENDİĞİNDE

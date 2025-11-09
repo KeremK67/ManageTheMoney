@@ -17,7 +17,7 @@ namespace ManageTheMoney.Classes
          */
 
         //!Transaction öğren!
-        //!Hasleme öğren!
+        //!Hashleme öğren!
         //!Orm öğren!
 
         // Neon.tech veri tabanı sunucusu
@@ -126,6 +126,55 @@ namespace ManageTheMoney.Classes
                     adapter.Fill(dataTable);
                     return dataTable;
                 }
+            }
+        }
+        #endregion
+
+        // GET TABLE - TABLOYU AL -- KULLANILMIYOR!!
+        #region
+        public static DataTable GetTable(string tableName)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                string query = $"SELECT * FROM {tableName} WHERE UserId = {Properties.Settings.Default.LoggedUserId}";
+                using (var adapter = new NpgsqlDataAdapter(query, connection))
+                {
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    return dataTable;
+                }
+            }
+        }
+        #endregion
+
+        // GET INCOMES AND EXPENSES - GELİRLERİ VE GİDERLERİ AL
+        #region
+        public static (decimal incomes, decimal espenses) GetIncomesAndExpenses()
+        {
+            // Değerler
+            decimal totalIncomes;
+            decimal totalExpenses;
+
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+
+                // Incomes
+                string queryIncomes = $"SELECT SUM(Amount) FROM Scenarios WHERE UserId = {Properties.Settings.Default.LoggedUserId} AND (SELECT Category FROM ScenarioTypes WHERE Id = Scenarios.TypeId) = 'Incomes'";
+                using (var commandIncomes = new NpgsqlCommand(queryIncomes, connection))
+                {
+                    totalIncomes = commandIncomes.ExecuteScalar() is DBNull ? 0 : Convert.ToDecimal(commandIncomes.ExecuteScalar());
+                }
+
+                // Expenses
+                string queryExpenses = $"SELECT SUM(Amount) FROM Scenarios WHERE UserId = {Properties.Settings.Default.LoggedUserId} AND (SELECT Category FROM ScenarioTypes WHERE Id = Scenarios.TypeId) = 'Expenses'";
+                using (var commandExpenses = new NpgsqlCommand(queryExpenses, connection))
+                {
+                    totalExpenses = commandExpenses.ExecuteScalar() is DBNull ? 0 : Convert.ToDecimal(commandExpenses.ExecuteScalar());
+                }
+
+                return (totalIncomes, totalExpenses);
             }
         }
         #endregion

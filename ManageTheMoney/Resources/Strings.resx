@@ -293,8 +293,32 @@
     <value>Created At</value>
     <comment>Grid başlığı</comment>
   </data>
-  <data name="ScenarioGridTitleUpdateAt" xml:space="preserve">
-    <value>Update At</value>
+  <data name="ScenarioGridTitleUpdatedAt" xml:space="preserve">
+    <value>Updated At</value>
     <comment>Grid başlığı</comment>
+  </data>
+  <data name="FrmScenariosText" xml:space="preserve">
+    <value>Scenarios</value>
+    <comment>Senaryo formu başlığı</comment>
+  </data>
+  <data name="GrpEditScenariosText" xml:space="preserve">
+    <value>Edit</value>
+    <comment>Grp başlığı</comment>
+  </data>
+  <data name="BtnEditScenarioText" xml:space="preserve">
+    <value>Edit Scenario</value>
+    <comment>Buton metni</comment>
+  </data>
+  <data name="BtnAddScenarioText" xml:space="preserve">
+    <value>Add Scenario</value>
+    <comment>Buton metni</comment>
+  </data>
+  <data name="BtnDeleteScenarioText" xml:space="preserve">
+    <value>Delete Scenario</value>
+    <comment>Buton metni</comment>
+  </data>
+  <data name="GrpScenariosTable" xml:space="preserve">
+    <value>Scenarios Table</value>
+    <comment>Grp başlığı</comment>
   </data>
 </root>

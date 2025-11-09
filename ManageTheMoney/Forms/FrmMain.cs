@@ -27,7 +27,7 @@ namespace ManageTheMoney
             InitializeComponent();
         }
 
-        // VALUES - DEĞERLER
+        // VARIABLES - DEĞİŞKENLER
         #region
         private readonly FrmMainContent  MainContent = new(); // Ana içerik form nesnesi.
         private readonly FrmScenarios Scenarios = new(); // Senaryolar formu nesnesi.

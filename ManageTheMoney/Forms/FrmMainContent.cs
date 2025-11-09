@@ -26,7 +26,7 @@ namespace ManageTheMoney.Forms
             InitializeComponent();
         }
 
-        //VALUES - DEĞERLER
+        // VARIABLES - DEĞİŞKENLER
         #region
         private int SelectedMonth = DateTime.Now.Month;
         private int SelectedYear = DateTime.Now.Year;
@@ -36,11 +36,12 @@ namespace ManageTheMoney.Forms
         #region
         private void FrmMainContent_Load(object sender, EventArgs e)
         {
+            // LOCALIZE - YERELLEŞTİRME
             this.Text = LanguageManager.RM.GetString("FrmMainContentText", CultureInfo.CurrentUICulture);
             string[] langs = LanguageManager.RM.GetString("CmbMonths").Split(';');
             CmbMonths.Items.Clear();
             CmbMonths.Items.AddRange(langs);
-            CmbMonths.SelectedIndex = SelectedMonth - 1; 
+            CmbMonths.SelectedIndex = SelectedMonth - 1;
             int[] years = new int[] { DateTime.Now.Year - 5, DateTime.Now.Year - 4, DateTime.Now.Year - 3, DateTime.Now.Year - 2, DateTime.Now.Year - 1, DateTime.Now.Year, DateTime.Now.Year + 1 };
             CmbYears.Items.Clear();
             foreach (int year in years)
@@ -48,6 +49,12 @@ namespace ManageTheMoney.Forms
                 CmbYears.Items.Add(year.ToString());
             }
             CmbYears.Text = SelectedYear.ToString();
+            CmbDays.Items.Clear();
+            for (int day = 1; day <= DateTime.DaysInMonth(Convert.ToInt16(CmbYears.Text), CmbMonths.SelectedIndex+1); day++)
+            {
+                CmbDays.Items.Add(day);
+            }
+            CmbDays.SelectedIndex = 0;
             GrpPreviousStatement.Text = LanguageManager.RM.GetString("GrpPreviousStatementText", CultureInfo.CurrentUICulture);
             GrpStatament.Text = LanguageManager.RM.GetString("GrpStatamentText", CultureInfo.CurrentUICulture);
             LblPreviousIncomes.Text = LanguageManager.RM.GetString("LblPreviousIncomesText", CultureInfo.CurrentUICulture);
@@ -56,12 +63,19 @@ namespace ManageTheMoney.Forms
             LblIncomes.Text = LanguageManager.RM.GetString("LblIncomesText", CultureInfo.CurrentUICulture);
             LblExpenses.Text = LanguageManager.RM.GetString("LblExpensesText", CultureInfo.CurrentUICulture);
             LblTotal.Text = LanguageManager.RM.GetString("LblTotalText", CultureInfo.CurrentUICulture);
+
+            // LOAD DATA - VERİ YÜKLEME
+            decimal incomes = Database.GetIncomesAndExpenses().incomes, expenses = Database.GetIncomesAndExpenses().espenses;
+
+            TxtIncomes.Text = incomes.ToString();
+            TxtExpenses.Text = expenses.ToString();
+            TxtTotal.Text = (incomes - expenses).ToString();
         }
         #endregion
 
         // BUTTONS - BUTONLAR
         #region
-        // PREVIOUS AND NEXT BUTTONS FOR MONTH SELECTION
+        // PREVIOUS AND NEXT BUTTONS FOR MONTH SELECTION - AY SEÇİMİ İÇİN ÖNCEKİ VE SONRAKİ BUTONLARI --GÜNLERİ AYARLA!!
         private void BtnPrevious_Click(object sender, EventArgs e)
         {
             CmbMonths.SelectedIndex--;

@@ -24,6 +24,11 @@ namespace ManageTheMoney.Forms
             InitializeComponent();
         }
 
+        // VARIABLES - DEĞİŞKENLER
+        #region
+        private readonly FrmAddScenarios AddScenarios = new();
+        #endregion
+
         // METHODS - METODLAR
         #region
         public static void FormatScenarioGrid(DataGridView grid)
@@ -41,6 +46,10 @@ namespace ManageTheMoney.Forms
             {
                 grid.Columns["AccountId"].Visible = false;
             }
+            if (grid.Columns["TypeId"] != null)
+            {
+                grid.Columns["TypeId"].Visible = false;
+            }
 
             // Başlıklar
             var names = new Dictionary<string, string>()
@@ -57,7 +66,7 @@ namespace ManageTheMoney.Forms
                 { "isrealized", LanguageManager.RM.GetString("ScenarioGridTitleIsRealized", CultureInfo.CurrentUICulture) },
                 { "realizedat", LanguageManager.RM.GetString("ScenarioGridTitleRealizedAt", CultureInfo.CurrentUICulture) },
                 { "createdat", LanguageManager.RM.GetString("ScenarioGridTitleCreatedAt", CultureInfo.CurrentUICulture) },
-                { "updateat", LanguageManager.RM.GetString("ScenarioGridTitleUpdateAt", CultureInfo.CurrentUICulture) },
+                { "updatedat", LanguageManager.RM.GetString("ScenarioGridTitleUpdatedAt", CultureInfo.CurrentUICulture) },
             };
 
             // Sütun başlıklarını ayarla
@@ -71,8 +80,16 @@ namespace ManageTheMoney.Forms
         #region
         private void FrmScenarios_Load(object sender, EventArgs e)
         {
+            this.Text = LanguageManager.RM.GetString("FrmScenariosText", CultureInfo.CurrentUICulture);
+            GrpEditScenarios.Text = LanguageManager.RM.GetString("GrpEditScenariosText", CultureInfo.CurrentUICulture);
+            BtnAddScenario.Text = LanguageManager.RM.GetString("BtnAddScenarioText", CultureInfo.CurrentUICulture);
+            BtnDeleteScenario.Text = LanguageManager.RM.GetString("BtnDeleteScenarioText", CultureInfo.CurrentUICulture);
+            BtnEditScenario.Text = LanguageManager.RM.GetString("BtnEditScenarioText", CultureInfo.CurrentUICulture);
+            GrpScenariosTable.Text = LanguageManager.RM.GetString("GrpScenariosTableText", CultureInfo.CurrentUICulture);
+
             DgvScenariosTable.DataSource = Database.LoadTable("Scenarios");
             FormatScenarioGrid(DgvScenariosTable);
+            DgvScenariosTable.RowTemplate.Height = 50;
         }
         #endregion
 
@@ -81,7 +98,7 @@ namespace ManageTheMoney.Forms
 
         private void BtnAddScenarios_Click(object sender, EventArgs e)
         {
-
+            AddScenarios.ShowDialog();
         }
 
         private void BtnDeleteScenarios_Click(object sender, EventArgs e)
