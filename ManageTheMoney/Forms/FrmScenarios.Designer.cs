@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GrpEditScenarios = new System.Windows.Forms.GroupBox();
             this.BtnEditScenario = new System.Windows.Forms.Button();
             this.BtnDeleteScenario = new System.Windows.Forms.Button();
@@ -104,14 +105,24 @@
             this.DgvScenariosTable.AllowUserToDeleteRows = false;
             this.DgvScenariosTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DgvScenariosTable.ColumnHeadersHeight = 75;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DgvScenariosTable.DefaultCellStyle = dataGridViewCellStyle1;
             this.DgvScenariosTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvScenariosTable.Location = new System.Drawing.Point(3, 22);
+            this.DgvScenariosTable.MultiSelect = false;
             this.DgvScenariosTable.Name = "DgvScenariosTable";
             this.DgvScenariosTable.ReadOnly = true;
             this.DgvScenariosTable.RowHeadersWidth = 50;
             this.DgvScenariosTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvScenariosTable.Size = new System.Drawing.Size(1562, 683);
             this.DgvScenariosTable.TabIndex = 0;
+            this.DgvScenariosTable.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.DgvScenariosTable_RowPrePaint);
             // 
             // FrmScenarios
             // 

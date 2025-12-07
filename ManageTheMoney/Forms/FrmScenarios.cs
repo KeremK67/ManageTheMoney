@@ -50,6 +50,10 @@ namespace ManageTheMoney.Forms
             {
                 grid.Columns["TypeId"].Visible = false;
             }
+            if (grid.Columns["Category"] != null)
+            {
+                grid.Columns["Category"].Visible = false;
+            }
 
             // Başlıklar
             var names = new Dictionary<string, string>()
@@ -64,6 +68,7 @@ namespace ManageTheMoney.Forms
                 { "probability", LanguageManager.RM.GetString("ScenarioGridTitleProbability", CultureInfo.CurrentUICulture) },
                 { "recurring", LanguageManager.RM.GetString("ScenarioGridTitleRecurring", CultureInfo.CurrentUICulture) },
                 { "isrealized", LanguageManager.RM.GetString("ScenarioGridTitleIsRealized", CultureInfo.CurrentUICulture) },
+                { "isnecessary", LanguageManager.RM.GetString("ScenarioGridTitleIsNecessary", CultureInfo.CurrentUICulture) },
                 { "realizedat", LanguageManager.RM.GetString("ScenarioGridTitleRealizedAt", CultureInfo.CurrentUICulture) },
                 { "createdat", LanguageManager.RM.GetString("ScenarioGridTitleCreatedAt", CultureInfo.CurrentUICulture) },
                 { "updatedat", LanguageManager.RM.GetString("ScenarioGridTitleUpdatedAt", CultureInfo.CurrentUICulture) },
@@ -87,9 +92,31 @@ namespace ManageTheMoney.Forms
             BtnEditScenario.Text = LanguageManager.RM.GetString("BtnEditScenarioText", CultureInfo.CurrentUICulture);
             GrpScenariosTable.Text = LanguageManager.RM.GetString("GrpScenariosTableText", CultureInfo.CurrentUICulture);
 
-            DgvScenariosTable.DataSource = Database.LoadTable("Scenarios");
+            DgvScenariosTable.DataSource = Database.LoadJoinedTable(
+                mainTable: "Scenarios",
+                joins: new[] {
+                ("ScenarioTypes", "TypeId", "Id")},
+            columns: new[] { "Scenarios.*", "ScenarioTypes.Category" },
+            where: $"UserId = {Properties.Settings.Default.LoggedUserId}",
+            orderBy: "ExpectedDate ASC");
             FormatScenarioGrid(DgvScenariosTable);
             DgvScenariosTable.RowTemplate.Height = 50;
+        }
+        #endregion
+
+        // DATAGRIDVIEW LOAD - DATAGRIDVIEW YÜKLENDİĞİNDE
+        #region
+        private void DgvScenariosTable_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            DgvScenariosTable.ClearSelection();
+
+            string category = DgvScenariosTable.Rows[e.RowIndex].Cells["Category"].Value?.ToString();
+
+            if (category == "Incomes")
+                DgvScenariosTable.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightGreen;
+
+            else if (category == "Expenses")
+                DgvScenariosTable.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.Red;
         }
         #endregion
 

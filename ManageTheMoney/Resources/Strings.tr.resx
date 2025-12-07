@@ -283,4 +283,7 @@
   <data name="GrpScenariosTable" xml:space="preserve">
     <value>Senaryolar Tablosu</value>
   </data>
+  <data name="ScenarioGridTitleIsNecessary" xml:space="preserve">
+    <value>Gerekli</value>
+  </data>
 </root>

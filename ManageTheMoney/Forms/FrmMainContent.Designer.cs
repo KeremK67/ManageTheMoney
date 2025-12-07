@@ -28,17 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea7 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend7 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series7 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series8 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.BtnPrevious = new System.Windows.Forms.Button();
             this.BtnNext = new System.Windows.Forms.Button();
-            this.PnlCalendar = new System.Windows.Forms.Panel();
-            this.CmbYears = new System.Windows.Forms.ComboBox();
-            this.CmbMonths = new System.Windows.Forms.ComboBox();
             this.GrpStatament = new System.Windows.Forms.GroupBox();
             this.PnlStatementPie = new System.Windows.Forms.Panel();
             this.ChrtStatement = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -59,8 +56,10 @@
             this.LblPreviousExpenses = new System.Windows.Forms.Label();
             this.LblPreviousIncomes = new System.Windows.Forms.Label();
             this.TxtPreviousIncomes = new System.Windows.Forms.TextBox();
+            this.CmbMonths = new System.Windows.Forms.ComboBox();
             this.CmbDays = new System.Windows.Forms.ComboBox();
-            this.PnlCalendar.SuspendLayout();
+            this.CmbYears = new System.Windows.Forms.ComboBox();
+            this.PnlCalendar = new System.Windows.Forms.Panel();
             this.GrpStatament.SuspendLayout();
             this.PnlStatementPie.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChrtStatement)).BeginInit();
@@ -69,6 +68,7 @@
             this.PnlPreviousStatementPie.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ChrtPreviousStatement)).BeginInit();
             this.PnlPreviousStatementText.SuspendLayout();
+            this.PnlCalendar.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnPrevious
@@ -97,51 +97,6 @@
             this.BtnNext.UseVisualStyleBackColor = false;
             this.BtnNext.Click += new System.EventHandler(this.BtnNext_Click);
             // 
-            // PnlCalendar
-            // 
-            this.PnlCalendar.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.PnlCalendar.Controls.Add(this.CmbYears);
-            this.PnlCalendar.Controls.Add(this.CmbDays);
-            this.PnlCalendar.Controls.Add(this.CmbMonths);
-            this.PnlCalendar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PnlCalendar.Location = new System.Drawing.Point(75, 0);
-            this.PnlCalendar.Name = "PnlCalendar";
-            this.PnlCalendar.Size = new System.Drawing.Size(1418, 100);
-            this.PnlCalendar.TabIndex = 2;
-            // 
-            // CmbYears
-            // 
-            this.CmbYears.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CmbYears.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.CmbYears.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbYears.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.CmbYears.FormattingEnabled = true;
-            this.CmbYears.IntegralHeight = false;
-            this.CmbYears.Items.AddRange(new object[] {
-            "Month",
-            "Month2"});
-            this.CmbYears.Location = new System.Drawing.Point(1069, 11);
-            this.CmbYears.MaxDropDownItems = 5;
-            this.CmbYears.Name = "CmbYears";
-            this.CmbYears.Size = new System.Drawing.Size(343, 81);
-            this.CmbYears.TabIndex = 5;
-            // 
-            // CmbMonths
-            // 
-            this.CmbMonths.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.CmbMonths.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbMonths.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.CmbMonths.FormattingEnabled = true;
-            this.CmbMonths.IntegralHeight = false;
-            this.CmbMonths.Items.AddRange(new object[] {
-            "Month",
-            "Month2"});
-            this.CmbMonths.Location = new System.Drawing.Point(16, 11);
-            this.CmbMonths.MaxDropDownItems = 5;
-            this.CmbMonths.Name = "CmbMonths";
-            this.CmbMonths.Size = new System.Drawing.Size(343, 81);
-            this.CmbMonths.TabIndex = 4;
-            // 
             // GrpStatament
             // 
             this.GrpStatament.BackColor = System.Drawing.SystemColors.InactiveCaption;
@@ -167,19 +122,19 @@
             // 
             // ChrtStatement
             // 
-            chartArea7.Name = "ChartArea1";
-            this.ChrtStatement.ChartAreas.Add(chartArea7);
-            legend7.Name = "Legend1";
-            legend7.Title = "Previous Statement Graph";
-            this.ChrtStatement.Legends.Add(legend7);
+            chartArea1.Name = "ChartArea1";
+            this.ChrtStatement.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            legend1.Title = "Previous Statement Graph";
+            this.ChrtStatement.Legends.Add(legend1);
             this.ChrtStatement.Location = new System.Drawing.Point(80, 34);
             this.ChrtStatement.Name = "ChrtStatement";
             this.ChrtStatement.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series7.ChartArea = "ChartArea1";
-            series7.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series7.Legend = "Legend1";
-            series7.Name = "Series1";
-            this.ChrtStatement.Series.Add(series7);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.ChrtStatement.Series.Add(series1);
             this.ChrtStatement.Size = new System.Drawing.Size(543, 300);
             this.ChrtStatement.TabIndex = 12;
             this.ChrtStatement.Text = "chart1";
@@ -283,19 +238,19 @@
             // 
             // ChrtPreviousStatement
             // 
-            chartArea8.Name = "ChartArea1";
-            this.ChrtPreviousStatement.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            legend8.Title = "Previous Statement Graph";
-            this.ChrtPreviousStatement.Legends.Add(legend8);
+            chartArea2.Name = "ChartArea1";
+            this.ChrtPreviousStatement.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            legend2.Title = "Previous Statement Graph";
+            this.ChrtPreviousStatement.Legends.Add(legend2);
             this.ChrtPreviousStatement.Location = new System.Drawing.Point(80, 34);
             this.ChrtPreviousStatement.Name = "ChrtPreviousStatement";
             this.ChrtPreviousStatement.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series8.ChartArea = "ChartArea1";
-            series8.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series8.Legend = "Legend1";
-            series8.Name = "Series1";
-            this.ChrtPreviousStatement.Series.Add(series8);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.ChrtPreviousStatement.Series.Add(series2);
             this.ChrtPreviousStatement.Size = new System.Drawing.Size(543, 300);
             this.ChrtPreviousStatement.TabIndex = 9;
             this.ChrtPreviousStatement.Text = "chart1";
@@ -373,6 +328,22 @@
             this.TxtPreviousIncomes.TabIndex = 9;
             this.TxtPreviousIncomes.Text = "6000";
             // 
+            // CmbMonths
+            // 
+            this.CmbMonths.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.CmbMonths.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbMonths.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CmbMonths.FormattingEnabled = true;
+            this.CmbMonths.IntegralHeight = false;
+            this.CmbMonths.Items.AddRange(new object[] {
+            "Month",
+            "Month2"});
+            this.CmbMonths.Location = new System.Drawing.Point(417, 11);
+            this.CmbMonths.MaxDropDownItems = 5;
+            this.CmbMonths.Name = "CmbMonths";
+            this.CmbMonths.Size = new System.Drawing.Size(343, 81);
+            this.CmbMonths.TabIndex = 4;
+            // 
             // CmbDays
             // 
             this.CmbDays.BackColor = System.Drawing.SystemColors.InactiveCaption;
@@ -383,11 +354,40 @@
             this.CmbDays.Items.AddRange(new object[] {
             "Month",
             "Month2"});
-            this.CmbDays.Location = new System.Drawing.Point(547, 11);
+            this.CmbDays.Location = new System.Drawing.Point(16, 11);
             this.CmbDays.MaxDropDownItems = 5;
             this.CmbDays.Name = "CmbDays";
             this.CmbDays.Size = new System.Drawing.Size(343, 81);
             this.CmbDays.TabIndex = 4;
+            // 
+            // CmbYears
+            // 
+            this.CmbYears.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CmbYears.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.CmbYears.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbYears.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.CmbYears.FormattingEnabled = true;
+            this.CmbYears.IntegralHeight = false;
+            this.CmbYears.Items.AddRange(new object[] {
+            "Month",
+            "Month2"});
+            this.CmbYears.Location = new System.Drawing.Point(1069, 11);
+            this.CmbYears.MaxDropDownItems = 5;
+            this.CmbYears.Name = "CmbYears";
+            this.CmbYears.Size = new System.Drawing.Size(343, 81);
+            this.CmbYears.TabIndex = 5;
+            // 
+            // PnlCalendar
+            // 
+            this.PnlCalendar.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.PnlCalendar.Controls.Add(this.CmbYears);
+            this.PnlCalendar.Controls.Add(this.CmbDays);
+            this.PnlCalendar.Controls.Add(this.CmbMonths);
+            this.PnlCalendar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PnlCalendar.Location = new System.Drawing.Point(75, 0);
+            this.PnlCalendar.Name = "PnlCalendar";
+            this.PnlCalendar.Size = new System.Drawing.Size(1418, 100);
+            this.PnlCalendar.TabIndex = 2;
             // 
             // FrmMainContent
             // 
@@ -405,7 +405,6 @@
             this.Text = "Statement";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmMainContent_Load);
-            this.PnlCalendar.ResumeLayout(false);
             this.GrpStatament.ResumeLayout(false);
             this.PnlStatementPie.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ChrtStatement)).EndInit();
@@ -416,6 +415,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ChrtPreviousStatement)).EndInit();
             this.PnlPreviousStatementText.ResumeLayout(false);
             this.PnlPreviousStatementText.PerformLayout();
+            this.PnlCalendar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -424,11 +424,8 @@
 
         private System.Windows.Forms.Button BtnPrevious;
         private System.Windows.Forms.Button BtnNext;
-        private System.Windows.Forms.Panel PnlCalendar;
         private System.Windows.Forms.GroupBox GrpStatament;
         private System.Windows.Forms.GroupBox GrpPreviousStatement;
-        private System.Windows.Forms.ComboBox CmbMonths;
-        private System.Windows.Forms.ComboBox CmbYears;
         private System.Windows.Forms.DataVisualization.Charting.Chart ChrtPreviousStatement;
         private System.Windows.Forms.Panel PnlStatementPie;
         private System.Windows.Forms.DataVisualization.Charting.Chart ChrtStatement;
@@ -447,6 +444,9 @@
         private System.Windows.Forms.Label LblPreviousExpenses;
         private System.Windows.Forms.Label LblPreviousIncomes;
         private System.Windows.Forms.TextBox TxtPreviousIncomes;
+        private System.Windows.Forms.ComboBox CmbMonths;
         private System.Windows.Forms.ComboBox CmbDays;
+        private System.Windows.Forms.ComboBox CmbYears;
+        private System.Windows.Forms.Panel PnlCalendar;
     }
 }

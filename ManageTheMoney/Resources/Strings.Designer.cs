@@ -439,6 +439,15 @@ namespace ManageTheMoney.Resources {
         }
         
         /// <summary>
+        ///   IsNecessery benzeri yerelleştirilmiş bir dize arar.
+        /// </summary>
+        public static string ScenarioGridTitleIsNecessary {
+            get {
+                return ResourceManager.GetString("ScenarioGridTitleIsNecessary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Is Realized benzeri yerelleştirilmiş bir dize arar.
         /// </summary>
         public static string ScenarioGridTitleIsRealized {

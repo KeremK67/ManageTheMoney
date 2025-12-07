@@ -130,6 +130,45 @@ namespace ManageTheMoney.Classes
         }
         #endregion
 
+        // LOAD JOIN TABLE DATAGRIDVIEW - BİRLEŞTİRİLMİŞ TABLOYU DATAGRIDVIEW'E YÜKLE -- CHATGPT KODUDUR BEN YAZMADIM
+        #region
+        public static DataTable LoadJoinedTable(
+        string mainTable,
+        (string joinTable, string mainColumn, string joinColumn)[] joins,
+        string[] columns = null,
+        string where = "",
+        string orderBy = "")
+        {
+            using var con = GetConnection();
+            con.Open();
+
+            // Kolon seçilmezse SELECT *
+            string columnSelection = (columns == null || columns.Length == 0)
+                ? "*"
+                : string.Join(", ", columns);
+
+            // JOIN'leri oluştur
+            string joinSql = "";
+            foreach (var j in joins)
+                joinSql += $" JOIN {j.joinTable} ON {mainTable}.{j.mainColumn} = {j.joinTable}.{j.joinColumn}";
+
+            // WHERE ekle
+            string whereSql = string.IsNullOrWhiteSpace(where) ? "" : $" WHERE {where}";
+
+            // ORDER BY ekle
+            string orderSql = string.IsNullOrWhiteSpace(orderBy) ? "" : $" ORDER BY {orderBy}";
+
+            string query = $"SELECT {columnSelection} FROM {mainTable}{joinSql}{whereSql}{orderSql}";
+
+            using var cmd = new NpgsqlCommand(query, con);
+            using var da = new NpgsqlDataAdapter(cmd);
+
+            DataTable dt = new();
+            da.Fill(dt);
+            return dt;
+        }
+        #endregion
+
         // GET TABLE - TABLOYU AL -- KULLANILMIYOR!!
         #region
         public static DataTable GetTable(string tableName)
@@ -150,33 +189,206 @@ namespace ManageTheMoney.Classes
 
         // GET INCOMES AND EXPENSES - GELİRLERİ VE GİDERLERİ AL
         #region
-        public static (decimal incomes, decimal espenses) GetIncomesAndExpenses()
+        public static (decimal incomes, decimal expenses) GetIncomesAndExpenses(int year = 0, int month = 0, int day = 0)
         {
-            // Değerler
-            decimal totalIncomes;
-            decimal totalExpenses;
+            decimal totalIncomes = 0, totalExpenses = 0;
 
             using (var connection = GetConnection())
             {
                 connection.Open();
 
-                // Incomes
-                string queryIncomes = $"SELECT SUM(Amount) FROM Scenarios WHERE UserId = {Properties.Settings.Default.LoggedUserId} AND (SELECT Category FROM ScenarioTypes WHERE Id = Scenarios.TypeId) = 'Incomes'";
-                using (var commandIncomes = new NpgsqlCommand(queryIncomes, connection))
+                string queryIncomes;
+                string queryExpenses;
+
+                using var commandIncomes = new NpgsqlCommand();
+                using var commandExpenses = new NpgsqlCommand();
+
+                commandIncomes.Connection = connection;
+                commandExpenses.Connection = connection;
+
+                if (year != 0 && month == 0 && day == 0)
                 {
-                    totalIncomes = commandIncomes.ExecuteScalar() is DBNull ? 0 : Convert.ToDecimal(commandIncomes.ExecuteScalar());
+                    DateTime startDate = new DateTime(year, 1, 1);
+                    DateTime endDate = startDate.AddYears(1);
+
+                    queryIncomes = @"SELECT SUM(Amount) 
+                             FROM Scenarios s
+                             JOIN ScenarioTypes t ON s.TypeId = t.Id
+                             WHERE s.UserId = @uid AND t.Category = 'Incomes'
+                             AND s.ExpectedDate >= @start AND s.ExpectedDate < @end";
+
+                    queryExpenses = queryIncomes.Replace("Incomes", "Expenses");
+
+                    commandIncomes.CommandText = queryIncomes;
+                    commandExpenses.CommandText = queryExpenses;
+
+                    commandIncomes.Parameters.AddWithValue("uid", Properties.Settings.Default.LoggedUserId);
+                    commandExpenses.Parameters.AddWithValue("uid", Properties.Settings.Default.LoggedUserId);
+
+                    commandIncomes.Parameters.AddWithValue("start", startDate);
+                    commandExpenses.Parameters.AddWithValue("start", startDate);
+
+                    commandIncomes.Parameters.AddWithValue("end", endDate);
+                    commandExpenses.Parameters.AddWithValue("end", endDate);
+                }
+                else if (year != 0 && month != 0 && day == 0)
+                {
+                    DateTime startDate = new DateTime(year, month, 1);
+                    DateTime endDate = startDate.AddMonths(1);
+
+                    queryIncomes = @"SELECT SUM(Amount) 
+                             FROM Scenarios s
+                             JOIN ScenarioTypes t ON s.TypeId = t.Id
+                             WHERE s.UserId = @uid AND t.Category = 'Incomes'
+                             AND s.ExpectedDate >= @start AND s.ExpectedDate < @end";
+
+                    queryExpenses = queryIncomes.Replace("Incomes", "Expenses");
+
+                    commandIncomes.CommandText = queryIncomes;
+                    commandExpenses.CommandText = queryExpenses;
+
+                    commandIncomes.Parameters.AddWithValue("uid", Properties.Settings.Default.LoggedUserId);
+                    commandExpenses.Parameters.AddWithValue("uid", Properties.Settings.Default.LoggedUserId);
+
+                    commandIncomes.Parameters.AddWithValue("start", startDate);
+                    commandExpenses.Parameters.AddWithValue("start", startDate);
+
+                    commandIncomes.Parameters.AddWithValue("end", endDate);
+                    commandExpenses.Parameters.AddWithValue("end", endDate);
+                }
+                else if (year != 0 && month != 0 && day != 0)
+                {
+                    DateTime specificDate = new DateTime(year, month, day);
+
+                    queryIncomes = @"SELECT SUM(Amount) 
+                             FROM Scenarios s
+                             JOIN ScenarioTypes t ON s.TypeId = t.Id
+                             WHERE s.UserId = @uid AND t.Category = 'Incomes'
+                             AND s.ExpectedDate = @date";
+
+                    queryExpenses = queryIncomes.Replace("Incomes", "Expenses");
+
+                    commandIncomes.CommandText = queryIncomes;
+                    commandExpenses.CommandText = queryExpenses;
+
+                    commandIncomes.Parameters.AddWithValue("uid", Properties.Settings.Default.LoggedUserId);
+                    commandExpenses.Parameters.AddWithValue("uid", Properties.Settings.Default.LoggedUserId);
+
+                    commandIncomes.Parameters.AddWithValue("date", specificDate);
+                    commandExpenses.Parameters.AddWithValue("date", specificDate);
+                }
+                else
+                {
+                    queryIncomes = @"SELECT SUM(Amount) 
+                             FROM Scenarios s
+                             JOIN ScenarioTypes t ON s.TypeId = t.Id
+                             WHERE s.UserId = @uid AND t.Category = 'Incomes'";
+
+                    queryExpenses = queryIncomes.Replace("Incomes", "Expenses");
+
+                    commandIncomes.CommandText = queryIncomes;
+                    commandExpenses.CommandText = queryExpenses;
+
+                    commandIncomes.Parameters.AddWithValue("uid", Properties.Settings.Default.LoggedUserId);
+                    commandExpenses.Parameters.AddWithValue("uid", Properties.Settings.Default.LoggedUserId);
                 }
 
-                // Expenses
-                string queryExpenses = $"SELECT SUM(Amount) FROM Scenarios WHERE UserId = {Properties.Settings.Default.LoggedUserId} AND (SELECT Category FROM ScenarioTypes WHERE Id = Scenarios.TypeId) = 'Expenses'";
-                using (var commandExpenses = new NpgsqlCommand(queryExpenses, connection))
-                {
-                    totalExpenses = commandExpenses.ExecuteScalar() is DBNull ? 0 : Convert.ToDecimal(commandExpenses.ExecuteScalar());
-                }
+                var result1 = commandIncomes.ExecuteScalar();
+                totalIncomes = result1 == DBNull.Value ? 0 : Convert.ToDecimal(result1);
+
+                var result2 = commandExpenses.ExecuteScalar();
+                totalExpenses = result2 == DBNull.Value ? 0 : Convert.ToDecimal(result2);
 
                 return (totalIncomes, totalExpenses);
             }
         }
         #endregion
+
+        // senaryo ekle
+        #region
+        public static bool AddScenario(string accountName, int typeId, decimal amount, DateTime expectedDate, string currency = "USD", string description = "", int probability = 100, bool recurring = false, DateTime? expectedDateEnd = null, bool isRealized = false, bool isNecessary = false, DateTime? realizedAt = null)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                string query = @"INSERT INTO Scenarios (UserId, AccountId, TypeId, Amount, ExpectedDate, Currency, Description, Probability, Recurring, ExpectedDateEnd, IsRealized, IsNecessary, RealizedAt, CreatedAt, UpdatedAt) 
+                                 VALUES (@UserId, @AccountId, @TypeId, @Amount, @ExpectedDate, @Currency, @Description, @Probability, @Recurring, @ExpectedDateEnd, @IsRealized, @IsNecessary, @RealizedAt, @CreatedAt, @UpdatedAt)";
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("UserId", Properties.Settings.Default.LoggedUserId);
+                    command.Parameters.AddWithValue("AccountId", accountName); /**/
+                    command.Parameters.AddWithValue("TypeId", typeId);
+                    command.Parameters.AddWithValue("Amount", amount);
+                    command.Parameters.AddWithValue("ExpectedDate", expectedDate);
+                    command.Parameters.AddWithValue("Currency", currency);
+                    command.Parameters.AddWithValue("Description", description);
+                    command.Parameters.AddWithValue("Probability", probability);
+                    command.Parameters.AddWithValue("Recurring", recurring);
+                    command.Parameters.AddWithValue("ExpectedDateEnd", expectedDateEnd ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("IsRealized", isRealized);
+                    command.Parameters.AddWithValue("IsNecessary", isNecessary);
+                    command.Parameters.AddWithValue("RealizedAt", realizedAt ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("CreatedAt", DateTime.Now);
+                    command.Parameters.AddWithValue("UpdatedAt", DateTime.Now);
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
+        }
+        #endregion
+
+        // hesapları getir
+        #region
+        public static string[] GetAccounts()
+        {
+            List<string> accounts = new List<string>();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                string query = "SELECT Name FROM Accounts WHERE UserId = @UserId";
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("UserId", Properties.Settings.Default.LoggedUserId);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            accounts.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+            return accounts.ToArray();
+        }
+        #endregion
+
+        // gelir gider kategorisini getir
+        #region
+        public static string[] GetScenarioTypesByCategory(bool incomes)
+        {
+            string category = incomes ? "Incomes" : "Expenses";
+
+            List<string> types = new List<string>();
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                string query = "SELECT Name FROM ScenarioTypes WHERE Category = @Category";
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("UserId", Properties.Settings.Default.LoggedUserId);
+                    command.Parameters.AddWithValue("Category", category);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            types.Add(reader.GetString(0));
+                        }
+                    }
+                }
+            }
+            return types.ToArray();
+        }
+        #endregion
+
     }
 }

@@ -321,4 +321,8 @@
     <value>Scenarios Table</value>
     <comment>Grp başlığı</comment>
   </data>
+  <data name="ScenarioGridTitleIsNecessary" xml:space="preserve">
+    <value>IsNecessery</value>
+    <comment>Grid başlığı</comment>
+  </data>
 </root>

@@ -32,6 +32,100 @@ namespace ManageTheMoney.Forms
         private int SelectedYear = DateTime.Now.Year;
         #endregion
 
+        // METHODS - METOTLAR
+        #region
+        // GET STATEMENT - HESAP ÖZETİNİ ALMA
+        private void GetStatement(int year = 0, int month = 0, int day = 0)
+        {
+            decimal incomes = 0, expenses = 0, total = 0, previousIncomes = 0, previousExpenses = 0, previousTotal = 0;
+            if (year != 0 && month == 0 && day == 0)
+            {
+                incomes = Database.GetIncomesAndExpenses(year).incomes;
+                expenses = Database.GetIncomesAndExpenses(year).expenses;
+                total = incomes - expenses;
+
+                year--;
+                previousIncomes = Database.GetIncomesAndExpenses(year).incomes;
+                previousExpenses = Database.GetIncomesAndExpenses(year).expenses;
+                previousTotal = previousIncomes - previousExpenses;
+            }
+            else if (year != 0 && month != 0 && day == 0)
+            {
+                incomes = Database.GetIncomesAndExpenses(year, month).incomes;
+                expenses = Database.GetIncomesAndExpenses(year, month).expenses;
+                total = incomes - expenses;
+
+                month--;
+                if (month == 0)
+                {
+                    month = 12;
+                    year--;
+                }
+                previousIncomes = Database.GetIncomesAndExpenses(year, month).incomes;
+                previousExpenses = Database.GetIncomesAndExpenses(year, month).expenses;
+                previousTotal = previousIncomes - previousExpenses;
+            }
+            else if (year != 0 && month != 0 && day != 0)
+            {
+                incomes = Database.GetIncomesAndExpenses(year, month, day).incomes;
+                expenses = Database.GetIncomesAndExpenses(year, month, day).expenses;
+                total = incomes - expenses;
+
+                day--;
+                if (day == 0)
+                {
+                    month--;
+                    if (month == 0)
+                    {
+                        month = 12;
+                        year--;
+                    }
+                    day = Convert.ToByte(DateTime.DaysInMonth(year, month));
+                }
+                previousIncomes = Database.GetIncomesAndExpenses(year, month, day).incomes;
+                previousExpenses = Database.GetIncomesAndExpenses(year, month, day).expenses;
+                previousTotal = previousIncomes - previousExpenses;
+            }
+            else
+            {
+                incomes = Database.GetIncomesAndExpenses().incomes;
+                expenses = Database.GetIncomesAndExpenses().expenses;
+                total = incomes - expenses;
+            }
+
+            TxtIncomes.Text = incomes.ToString();
+            TxtExpenses.Text = expenses.ToString();
+            TxtTotal.Text = total.ToString();
+            TxtPreviousIncomes.Text = previousIncomes.ToString();
+            TxtPreviousExpenses.Text = previousExpenses.ToString();
+            TxtPreviousTotal.Text = previousTotal.ToString();
+        }
+
+        // GET DAYS IN MONTH - AYDAKİ GÜNLERİ ALMA
+        private void GetDaysInMonth()
+        {
+            int oldIndex = CmbDays.SelectedIndex;
+
+            // Günleri yeniden yükle
+            CmbDays.Items.Clear();
+            int days = DateTime.DaysInMonth(Convert.ToInt32(CmbYears.Text), CmbMonths.SelectedIndex + 1);
+            for (int day = 1; day <= days; day++)
+            {
+                CmbDays.Items.Add(day);
+            }
+
+            // Eğer eski index geçersiz hale geldiyse, son güne ayarla
+            if (oldIndex >= CmbDays.Items.Count)
+                oldIndex = CmbDays.Items.Count - 1;
+
+            // Eğer liste boş değilse index’i uygula
+            if (oldIndex >= 0)
+                CmbDays.SelectedIndex = oldIndex;
+            else
+                CmbDays.SelectedIndex = 0;
+        }
+        #endregion
+
         // LOAD - FORM YÜKLENDİĞİNDE
         #region
         private void FrmMainContent_Load(object sender, EventArgs e)
@@ -49,12 +143,7 @@ namespace ManageTheMoney.Forms
                 CmbYears.Items.Add(year.ToString());
             }
             CmbYears.Text = SelectedYear.ToString();
-            CmbDays.Items.Clear();
-            for (int day = 1; day <= DateTime.DaysInMonth(Convert.ToInt16(CmbYears.Text), CmbMonths.SelectedIndex+1); day++)
-            {
-                CmbDays.Items.Add(day);
-            }
-            CmbDays.SelectedIndex = 0;
+            GetDaysInMonth();
             GrpPreviousStatement.Text = LanguageManager.RM.GetString("GrpPreviousStatementText", CultureInfo.CurrentUICulture);
             GrpStatament.Text = LanguageManager.RM.GetString("GrpStatamentText", CultureInfo.CurrentUICulture);
             LblPreviousIncomes.Text = LanguageManager.RM.GetString("LblPreviousIncomesText", CultureInfo.CurrentUICulture);
@@ -65,11 +154,7 @@ namespace ManageTheMoney.Forms
             LblTotal.Text = LanguageManager.RM.GetString("LblTotalText", CultureInfo.CurrentUICulture);
 
             // LOAD DATA - VERİ YÜKLEME
-            decimal incomes = Database.GetIncomesAndExpenses().incomes, expenses = Database.GetIncomesAndExpenses().espenses;
-
-            TxtIncomes.Text = incomes.ToString();
-            TxtExpenses.Text = expenses.ToString();
-            TxtTotal.Text = (incomes - expenses).ToString();
+            GetStatement(Convert.ToInt16(CmbYears.Text), Convert.ToByte(CmbMonths.SelectedIndex + 1));
         }
         #endregion
 
@@ -84,6 +169,8 @@ namespace ManageTheMoney.Forms
                 CmbMonths.SelectedIndex = 11;
                 CmbYears.SelectedIndex--;
             }
+            GetDaysInMonth();
+            GetStatement(Convert.ToInt16(CmbYears.Text), Convert.ToByte(CmbMonths.SelectedIndex + 1));
         }
         private void BtnNext_Click(object sender, EventArgs e)
         {
@@ -96,6 +183,8 @@ namespace ManageTheMoney.Forms
             {
                 CmbMonths.SelectedIndex++;
             }
+            GetDaysInMonth();
+            GetStatement(Convert.ToInt16(CmbYears.Text), Convert.ToByte(CmbMonths.SelectedIndex + 1));
         }
         #endregion
     }

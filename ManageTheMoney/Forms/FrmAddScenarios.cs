@@ -7,14 +7,98 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ManageTheMoney.Classes;
 
 namespace ManageTheMoney.Forms
 {
     public partial class FrmAddScenarios : Form
     {
+        // !! TEXTBOXLARI BÜYÜT, SENARYO TİPLERİNİN İSİMLERİNİ DÜZENLE
         public FrmAddScenarios()
         {
             InitializeComponent();
         }
+
+        // FORM LOAD -- FORM YÜKLENDİĞİNDE
+        #region
+        private void FrmAddScenarios_Load(object sender, EventArgs e)
+        {
+            // Gelir gider türlerini getirme
+            LoadScenarioCategories();
+
+            // Hesapları getirme
+            CmbAccount.Items.Clear();
+            foreach (var item in Database.GetAccounts())
+            {
+                CmbAccount.Items.Add(item);
+            }
+            CmbAccount.SelectedIndex = 0;
+        }
+        #endregion
+
+        // METHODS - METOTLAR
+        #region
+        // Gelir gider türlerini getirme
+        private void LoadScenarioCategories()
+        {
+            CmbScenarioType.Items.Clear();
+            foreach (var item in Database.GetScenarioTypesByCategory(ChbScenarioCategory.Checked))
+            {
+                CmbScenarioType.Items.Add(item);
+            }
+            CmbScenarioType.SelectedIndex = 0;
+        }
+        #endregion
+
+        // BUTTONS - BUTONLAR
+        #region
+        private void BtnAdd_Click(object sender, EventArgs e)
+        {
+            // kontroller
+            if (string.IsNullOrWhiteSpace(TxtTitle.Text))
+            {
+                MessageBox.Show("Title cannot be left blank");
+            }
+            else if (string.IsNullOrWhiteSpace(TxtAmount.Text))
+            {
+                MessageBox.Show("Amount cannot be left blank");
+            }
+            else if (string.IsNullOrWhiteSpace(TxtProbability.Text))
+            {
+                MessageBox.Show("Probability cannot be left blank");
+            }
+            else
+            {
+               
+            }
+        }
+
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        #endregion
+
+        // CHECKBOXES - ONAY KUTULARI
+        #region
+        // Null checkbox kontrolleri
+        private void ChbRealizedDateNull_CheckedChanged(object sender, EventArgs e)
+        {
+            DtpRealizedDate.Enabled = !ChbRealizedDateNull.Checked;
+        }
+        private void ChbExpectedDateEndNull_CheckedChanged(object sender, EventArgs e)
+        {
+            DtpExpectedDateEnd.Enabled = !ChbExpectedDateEndNull.Checked;
+        }
+        private void ChbExpectedDateNull_CheckedChanged(object sender, EventArgs e)
+        {
+            DtpExpectedDate.Enabled = !ChbExpectedDateNull.Checked;
+        }
+        // Gelir gider ayrımı
+        private void ChbScenarioCategory_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadScenarioCategories();
+        }
+        #endregion
     }
 }
