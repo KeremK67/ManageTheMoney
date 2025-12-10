@@ -1,6 +1,6 @@
 ﻿namespace ManageTheMoney.Forms
 {
-    partial class FrmAddScenarios
+    partial class FrmEditScenarios
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             this.GrpAddScenario = new System.Windows.Forms.GroupBox();
             this.ChbScenarioCategory = new System.Windows.Forms.CheckBox();
-            this.BtnAdd = new System.Windows.Forms.Button();
+            this.BtnEdit = new System.Windows.Forms.Button();
             this.BtnCancel = new System.Windows.Forms.Button();
             this.ChbNecessary = new System.Windows.Forms.CheckBox();
             this.ChbRealized = new System.Windows.Forms.CheckBox();
@@ -62,7 +62,7 @@
             // GrpAddScenario
             // 
             this.GrpAddScenario.Controls.Add(this.ChbScenarioCategory);
-            this.GrpAddScenario.Controls.Add(this.BtnAdd);
+            this.GrpAddScenario.Controls.Add(this.BtnEdit);
             this.GrpAddScenario.Controls.Add(this.BtnCancel);
             this.GrpAddScenario.Controls.Add(this.ChbNecessary);
             this.GrpAddScenario.Controls.Add(this.ChbRealized);
@@ -93,7 +93,7 @@
             this.GrpAddScenario.Location = new System.Drawing.Point(0, 0);
             this.GrpAddScenario.Name = "GrpAddScenario";
             this.GrpAddScenario.Size = new System.Drawing.Size(921, 495);
-            this.GrpAddScenario.TabIndex = 0;
+            this.GrpAddScenario.TabIndex = 1;
             this.GrpAddScenario.TabStop = false;
             this.GrpAddScenario.Text = "Add Scenario";
             // 
@@ -109,19 +109,17 @@
             this.ChbScenarioCategory.TabIndex = 5;
             this.ChbScenarioCategory.Text = "Incomes";
             this.ChbScenarioCategory.UseVisualStyleBackColor = true;
-            this.ChbScenarioCategory.CheckedChanged += new System.EventHandler(this.ChbScenarioCategory_CheckedChanged);
             // 
-            // BtnAdd
+            // BtnEdit
             // 
-            this.BtnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.BtnAdd.Location = new System.Drawing.Point(815, 441);
-            this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(94, 42);
-            this.BtnAdd.TabIndex = 2;
-            this.BtnAdd.Text = "Add";
-            this.BtnAdd.UseVisualStyleBackColor = true;
-            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
+            this.BtnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.BtnEdit.Location = new System.Drawing.Point(815, 441);
+            this.BtnEdit.Name = "BtnEdit";
+            this.BtnEdit.Size = new System.Drawing.Size(94, 42);
+            this.BtnEdit.TabIndex = 2;
+            this.BtnEdit.Text = "Edit";
+            this.BtnEdit.UseVisualStyleBackColor = true;
             // 
             // BtnCancel
             // 
@@ -133,7 +131,6 @@
             this.BtnCancel.TabIndex = 1;
             this.BtnCancel.Text = "Cancel";
             this.BtnCancel.UseVisualStyleBackColor = true;
-            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // ChbNecessary
             // 
@@ -167,7 +164,6 @@
             this.ChbExpectedDateEndNull.TabIndex = 4;
             this.ChbExpectedDateEndNull.Text = "Null";
             this.ChbExpectedDateEndNull.UseVisualStyleBackColor = true;
-            this.ChbExpectedDateEndNull.CheckedChanged += new System.EventHandler(this.ChbExpectedDateEndNull_CheckedChanged);
             // 
             // ChbRealizedDateNull
             // 
@@ -179,7 +175,6 @@
             this.ChbRealizedDateNull.TabIndex = 4;
             this.ChbRealizedDateNull.Text = "Null";
             this.ChbRealizedDateNull.UseVisualStyleBackColor = true;
-            this.ChbRealizedDateNull.CheckedChanged += new System.EventHandler(this.ChbRealizedDateNull_CheckedChanged);
             // 
             // ChbExpectedDateNull
             // 
@@ -191,7 +186,6 @@
             this.ChbExpectedDateNull.TabIndex = 4;
             this.ChbExpectedDateNull.Text = "Null";
             this.ChbExpectedDateNull.UseVisualStyleBackColor = true;
-            this.ChbExpectedDateNull.CheckedChanged += new System.EventHandler(this.ChbExpectedDateNull_CheckedChanged);
             // 
             // ChbRecurring
             // 
@@ -361,16 +355,16 @@
             this.LblTitle.Text = "*Title :";
             this.LblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // FrmAddScenarios
+            // FrmEditScenarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(921, 495);
             this.Controls.Add(this.GrpAddScenario);
-            this.Name = "FrmAddScenarios";
-            this.Text = "FrmAddScenarios";
-            this.Load += new System.EventHandler(this.FrmAddScenarios_Load);
+            this.Name = "FrmEditScenarios";
+            this.Text = "FrmEditScenarios";
+            this.Load += new System.EventHandler(this.FrmEditScenarios_Load);
             this.GrpAddScenario.ResumeLayout(false);
             this.GrpAddScenario.PerformLayout();
             this.ResumeLayout(false);
@@ -380,32 +374,32 @@
         #endregion
 
         private System.Windows.Forms.GroupBox GrpAddScenario;
+        private System.Windows.Forms.CheckBox ChbScenarioCategory;
+        private System.Windows.Forms.Button BtnEdit;
+        private System.Windows.Forms.Button BtnCancel;
+        private System.Windows.Forms.CheckBox ChbNecessary;
+        private System.Windows.Forms.CheckBox ChbRealized;
+        private System.Windows.Forms.CheckBox ChbExpectedDateEndNull;
+        private System.Windows.Forms.CheckBox ChbRealizedDateNull;
+        private System.Windows.Forms.CheckBox ChbExpectedDateNull;
+        private System.Windows.Forms.CheckBox ChbRecurring;
+        private System.Windows.Forms.DateTimePicker DtpRealizedDate;
+        private System.Windows.Forms.DateTimePicker DtpExpectedDateEnd;
+        private System.Windows.Forms.DateTimePicker DtpExpectedDate;
+        private System.Windows.Forms.Label LblRealizedDate;
+        private System.Windows.Forms.Label LblExpectedDateEnd;
+        private System.Windows.Forms.ComboBox CmbAccount;
+        private System.Windows.Forms.ComboBox CmbScenarioType;
+        private System.Windows.Forms.Label LblExpectedDate;
+        private System.Windows.Forms.TextBox TxtProbability;
         private System.Windows.Forms.TextBox TxtAmount;
+        private System.Windows.Forms.Label LblAccount;
+        private System.Windows.Forms.Label LblProbability;
+        private System.Windows.Forms.Label LblScenarioType;
         private System.Windows.Forms.Label LblAmount;
         private System.Windows.Forms.TextBox TxtDescription;
         private System.Windows.Forms.Label LblDescription;
         private System.Windows.Forms.TextBox TxtTitle;
         private System.Windows.Forms.Label LblTitle;
-        private System.Windows.Forms.CheckBox ChbRecurring;
-        private System.Windows.Forms.DateTimePicker DtpExpectedDateEnd;
-        private System.Windows.Forms.DateTimePicker DtpExpectedDate;
-        private System.Windows.Forms.Label LblExpectedDateEnd;
-        private System.Windows.Forms.Label LblExpectedDate;
-        private System.Windows.Forms.TextBox TxtProbability;
-        private System.Windows.Forms.Label LblProbability;
-        private System.Windows.Forms.CheckBox ChbRealized;
-        private System.Windows.Forms.DateTimePicker DtpRealizedDate;
-        private System.Windows.Forms.Label LblRealizedDate;
-        private System.Windows.Forms.Button BtnCancel;
-        private System.Windows.Forms.Button BtnAdd;
-        private System.Windows.Forms.CheckBox ChbNecessary;
-        private System.Windows.Forms.ComboBox CmbAccount;
-        private System.Windows.Forms.Label LblAccount;
-        private System.Windows.Forms.CheckBox ChbExpectedDateEndNull;
-        private System.Windows.Forms.CheckBox ChbRealizedDateNull;
-        private System.Windows.Forms.CheckBox ChbExpectedDateNull;
-        private System.Windows.Forms.ComboBox CmbScenarioType;
-        private System.Windows.Forms.Label LblScenarioType;
-        private System.Windows.Forms.CheckBox ChbScenarioCategory;
     }
 }

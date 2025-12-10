@@ -55,6 +55,7 @@ namespace ManageTheMoney
             MainContent.Dock = DockStyle.Fill;
             MainContent.Show();
             SelectedMenu = "MainMenu";
+            MainContent.GetStatement();
         }
 
         // Bu metodun amacı senaryolar formunu panelde göstermek.

@@ -102,6 +102,12 @@
     <Compile Include="Forms\FrmAddScenarios.Designer.cs">
       <DependentUpon>FrmAddScenarios.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmEditScenarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmEditScenarios.Designer.cs">
+      <DependentUpon>FrmEditScenarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\FrmAddScenarios.resx">
       <DependentUpon>FrmAddScenarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmEditScenarios.resx">
+      <DependentUpon>FrmEditScenarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

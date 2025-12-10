@@ -28,15 +28,20 @@ namespace ManageTheMoney.Forms
 
         // VARIABLES - DEĞİŞKENLER
         #region
-        private int SelectedMonth = DateTime.Now.Month;
-        private int SelectedYear = DateTime.Now.Year;
+        private int SelectedMonth = DateTime.Now.Month, SelectedYear = DateTime.Now.Year;
         #endregion
 
         // METHODS - METOTLAR
         #region
         // GET STATEMENT - HESAP ÖZETİNİ ALMA
-        private void GetStatement(int year = 0, int month = 0, int day = 0)
+        public void GetStatement(int year = 0, int month = 0, int day = 0)
         {
+            if (year == 0)
+            {
+                year = Convert.ToInt32(CmbYears.Text);
+                month = Convert.ToByte(CmbMonths.SelectedIndex + 1);
+            }
+
             decimal incomes = 0, expenses = 0, total = 0, previousIncomes = 0, previousExpenses = 0, previousTotal = 0;
             if (year != 0 && month == 0 && day == 0)
             {
@@ -172,6 +177,7 @@ namespace ManageTheMoney.Forms
             GetDaysInMonth();
             GetStatement(Convert.ToInt16(CmbYears.Text), Convert.ToByte(CmbMonths.SelectedIndex + 1));
         }
+
         private void BtnNext_Click(object sender, EventArgs e)
         {
             if (CmbMonths.SelectedIndex >= CmbMonths.Items.Count - 1)

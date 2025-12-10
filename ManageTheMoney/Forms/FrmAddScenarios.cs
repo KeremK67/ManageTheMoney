@@ -19,6 +19,9 @@ namespace ManageTheMoney.Forms
             InitializeComponent();
         }
 
+        // VALUES -- DEĞİŞKENLER
+        public event Action ScenarioAdded;
+
         // FORM LOAD -- FORM YÜKLENDİĞİNDE
         #region
         private void FrmAddScenarios_Load(object sender, EventArgs e)
@@ -69,12 +72,40 @@ namespace ManageTheMoney.Forms
             }
             else
             {
-               
+                // kontroller
+                DateTime? expetedDate = ChbExpectedDateNull.Checked ? null : DtpExpectedDate.Value;
+                DateTime? expectedDateEnd = ChbExpectedDateEndNull.Checked ? null : DtpExpectedDateEnd.Value;
+                DateTime? realizedAt = ChbRealizedDateNull.Checked ? null : DtpRealizedDate.Value;
+
+                if (
+                    Database.AddScenario(
+                    Database.GetAccountIdByName(CmbAccount.Text),
+                    TxtTitle.Text,
+                    TxtDescription.Text,
+                    Database.GetTypeIdByName(CmbScenarioType.Text, ChbScenarioCategory.Checked ? "Incomes" : "Expenses"),
+                    Convert.ToDecimal(TxtAmount.Text),
+                    Convert.ToInt32(TxtProbability.Text),
+                    ChbRecurring.Checked,
+                    ChbRealized.Checked,
+                    ChbNecessary.Checked,
+                    expetedDate,
+                    expectedDateEnd,
+                    realizedAt
+                    )
+                    )
+                {
+                    MessageBox.Show("Scenario added successfully");
+                    ScenarioAdded?.Invoke();
+                    this.Close();
+                }
+                else
+                    MessageBox.Show("An error occurred while adding the scenario");
             }
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
         {
+            ScenarioAdded?.Invoke();
             this.Close();
         }
         #endregion

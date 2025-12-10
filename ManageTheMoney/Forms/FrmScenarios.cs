@@ -79,6 +79,23 @@ namespace ManageTheMoney.Forms
                 if (names.ContainsKey(col.Name))
                     col.HeaderText = names[col.Name];
         }
+
+        private void LoadScenarioGrid()
+        {
+            DgvScenariosTable.DataSource = Database.LoadJoinedTable(
+                mainTable: "Scenarios",
+                joins: new[] {
+                ("ScenarioTypes", "TypeId", "Id")},
+            columns: new[] { "Scenarios.*", "ScenarioTypes.Category" },
+            where: $"UserId = {Properties.Settings.Default.LoggedUserId}",
+            orderBy: "ExpectedDate ASC");
+            FormatScenarioGrid(DgvScenariosTable);
+        }
+
+        private void RefreshScenarioGrid()
+        {
+            LoadScenarioGrid();
+        }
         #endregion
 
         // FORM LOAD - FORM YÜKLENDİĞİNDE
@@ -92,14 +109,7 @@ namespace ManageTheMoney.Forms
             BtnEditScenario.Text = LanguageManager.RM.GetString("BtnEditScenarioText", CultureInfo.CurrentUICulture);
             GrpScenariosTable.Text = LanguageManager.RM.GetString("GrpScenariosTableText", CultureInfo.CurrentUICulture);
 
-            DgvScenariosTable.DataSource = Database.LoadJoinedTable(
-                mainTable: "Scenarios",
-                joins: new[] {
-                ("ScenarioTypes", "TypeId", "Id")},
-            columns: new[] { "Scenarios.*", "ScenarioTypes.Category" },
-            where: $"UserId = {Properties.Settings.Default.LoggedUserId}",
-            orderBy: "ExpectedDate ASC");
-            FormatScenarioGrid(DgvScenariosTable);
+            LoadScenarioGrid();
             DgvScenariosTable.RowTemplate.Height = 50;
         }
         #endregion
@@ -125,12 +135,19 @@ namespace ManageTheMoney.Forms
 
         private void BtnAddScenarios_Click(object sender, EventArgs e)
         {
+            AddScenarios.ScenarioAdded += LoadScenarioGrid;
             AddScenarios.ShowDialog();
         }
 
         private void BtnDeleteScenarios_Click(object sender, EventArgs e)
         {
-
+            if (Database.DeleteScenario(Convert.ToInt32(DgvScenariosTable.CurrentRow.Cells["Id"].Value)))
+            {
+                MessageBox.Show("succesfuly");
+                LoadScenarioGrid();
+            }
+            else
+                MessageBox.Show("unsuccesfuly");
         }
 
         private void BtnEditScenarios_Click(object sender, EventArgs e)

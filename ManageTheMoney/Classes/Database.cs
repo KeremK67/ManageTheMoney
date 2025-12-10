@@ -306,30 +306,28 @@ namespace ManageTheMoney.Classes
 
         // senaryo ekle
         #region
-        public static bool AddScenario(string accountName, int typeId, decimal amount, DateTime expectedDate, string currency = "USD", string description = "", int probability = 100, bool recurring = false, DateTime? expectedDateEnd = null, bool isRealized = false, bool isNecessary = false, DateTime? realizedAt = null)
+        public static bool AddScenario(int accountId, string title, string description, int typeId, decimal amount, int probability, bool recurring, bool isRealized, bool isNecessary, DateTime? expectedDate = null, DateTime? expectedDateEnd = null, DateTime? realizedAt = null)
         {
             using (var connection = GetConnection())
             {
                 connection.Open();
-                string query = @"INSERT INTO Scenarios (UserId, AccountId, TypeId, Amount, ExpectedDate, Currency, Description, Probability, Recurring, ExpectedDateEnd, IsRealized, IsNecessary, RealizedAt, CreatedAt, UpdatedAt) 
-                                 VALUES (@UserId, @AccountId, @TypeId, @Amount, @ExpectedDate, @Currency, @Description, @Probability, @Recurring, @ExpectedDateEnd, @IsRealized, @IsNecessary, @RealizedAt, @CreatedAt, @UpdatedAt)";
+                string query = @"INSERT INTO Scenarios (UserId, AccountId, Title, Description, TypeId, Amount, ExpectedDate, ExpectedDateEnd, Probability, Recurring, IsRealized, IsNecessary, RealizedAt) 
+                                 VALUES (@UserId, @AccountId, @Title, @Description, @TypeId, @Amount, @ExpectedDate, @ExpectedDateEnd, @Probability, @Recurring, @IsRealized, @IsNecessary, @RealizedAt)";
                 using (var command = new NpgsqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("UserId", Properties.Settings.Default.LoggedUserId);
-                    command.Parameters.AddWithValue("AccountId", accountName); /**/
+                    command.Parameters.AddWithValue("AccountId", accountId);
+                    command.Parameters.AddWithValue("Title", title);
+                    command.Parameters.AddWithValue("Description", description);
                     command.Parameters.AddWithValue("TypeId", typeId);
                     command.Parameters.AddWithValue("Amount", amount);
-                    command.Parameters.AddWithValue("ExpectedDate", expectedDate);
-                    command.Parameters.AddWithValue("Currency", currency);
-                    command.Parameters.AddWithValue("Description", description);
+                    command.Parameters.AddWithValue("ExpectedDate", expectedDate ?? (object)DBNull.Value);
+                    command.Parameters.AddWithValue("ExpectedDateEnd", expectedDateEnd ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("Probability", probability);
                     command.Parameters.AddWithValue("Recurring", recurring);
-                    command.Parameters.AddWithValue("ExpectedDateEnd", expectedDateEnd ?? (object)DBNull.Value);
                     command.Parameters.AddWithValue("IsRealized", isRealized);
                     command.Parameters.AddWithValue("IsNecessary", isNecessary);
                     command.Parameters.AddWithValue("RealizedAt", realizedAt ?? (object)DBNull.Value);
-                    command.Parameters.AddWithValue("CreatedAt", DateTime.Now);
-                    command.Parameters.AddWithValue("UpdatedAt", DateTime.Now);
                     int rowsAffected = command.ExecuteNonQuery();
                     return rowsAffected > 0;
                 }
@@ -387,6 +385,63 @@ namespace ManageTheMoney.Classes
                 }
             }
             return types.ToArray();
+        }
+        #endregion
+
+        // accountId al
+        #region
+        public static int GetAccountIdByName(string accountName)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                string query = "SELECT Id FROM Accounts WHERE Name = @Name AND UserId = @UserId";
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("Name", accountName);
+                    command.Parameters.AddWithValue("UserId", Properties.Settings.Default.LoggedUserId);
+                    var result = command.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : -1;
+                }
+            }
+        }
+        #endregion
+
+        // typeId al
+        #region
+        public static int GetTypeIdByName(string typeName, string category)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                string query = "SELECT Id FROM ScenarioTypes WHERE Name = @Name AND Category = @Category";
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("Name", typeName);
+                    command.Parameters.AddWithValue("Category", category);
+                    var result = command.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : -1;
+                }
+            }
+        }
+        #endregion
+
+        // senaryo sil
+        #region
+        public static bool DeleteScenario(int scenarioId)
+        {
+            using (var connection = GetConnection())
+            {
+                connection.Open();
+                string query = "DELETE FROM Scenarios WHERE Id = @Id AND UserId = @UserId";
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("Id", scenarioId);
+                    command.Parameters.AddWithValue("UserId", Properties.Settings.Default.LoggedUserId);
+                    int rowsAffected = command.ExecuteNonQuery();
+                    return rowsAffected > 0;
+                }
+            }
         }
         #endregion
 
